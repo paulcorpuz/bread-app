@@ -1,8 +1,26 @@
 const Note = require('../../models/Note');
 
 module.exports = {
+  // index,
   create,
 };
+
+
+// async function index(req, res){
+//   try {
+
+
+
+
+
+//     res.json(note);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// }
+
+
+
 
 async function create(req, res) {
   try {

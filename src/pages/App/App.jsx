@@ -1,26 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
-// import NewOrderPage from '../NewOrderPage/NewOrderPage';
-// import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import './App.css';
 import NavBar from '../../components/NavBar/NavBar';
-import NoteForm from '../../components/NoteForm/NoteForm';
+import NotesForm from '../../components/NotesForm/NotesForm';
+// import NotesPage from '../NotesPage/NotesPage';
+
+// import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([
+    { text: "Hi Paul"}
+  ]);
 
-  useEffect(() => {
-    // fetch notes from the API
-    // set the notes state with the response
-  }, []);
-
-  function addNote(text) {
-    // create a new note object with the text and the current user's ID
-    // send a POST request to the API to create the new note
-    // add the new note to the notes state
+  function addNote(note) {
+    setNotes([...notes, note]);
   }
 
   return (
@@ -32,7 +28,10 @@ export default function App() {
             {/* Route components in here */}
             {/* <Route path="/orders/new" element={<NewOrderPage />} /> */}
             {/* <Route path="/orders" element={<OrderHistoryPage />} /> */}
+            {/* <Route path="/" element={<NotesPage notes={notes} addNote={addNote} />} /> */}
           </Routes>
+
+
 
           <hr />
           <div>
@@ -48,9 +47,11 @@ export default function App() {
             )}
           </div>
 
+
+
           <hr />
           <div>
-            <NoteForm addNote={addNote} />
+            <NotesForm addNote={addNote} />
           </div>
         </>
         :

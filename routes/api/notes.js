@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 const notesCtrl = require('../../controllers/api/notes');
 // require the authorization middleware function
-const ensureLoggedIn = require('../../config/ensureLoggedIn');
+// const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
-// *** All paths start with '/api/users' ***
+// *** All paths start with '/api/notes' ***
 
 // GET /api/items
-router.get('/', ensureLoggedIn, notesCtrl.index);
+router.get('/', notesCtrl.index);
 // POST /api/items/:id
-router.post('/', ensureLoggedIn, notesCtrl.create);
+router.post('/', notesCtrl.create);
 
 
 module.exports = router;
