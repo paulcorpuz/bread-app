@@ -27,15 +27,19 @@ export default function NotesPage() {
   }
 
   function handleSort(evt) {
-    toggleOrder();
-    const formatNotes = notes.sort(function(noteA, noteB) {
-      const aDate = new Date(noteA.createdAt)
-      const bDate = new Date(noteB.createdAt)
-      
-      if (sortOrder === 'asc') return bDate - aDate
-      if (sortOrder === 'desc') return aDate - bDate
-    })
-    setNotes([...formatNotes]);
+    toggleOrder()
+
+    const sortedNotes = [...notes];
+
+  sortedNotes.sort(function(noteA, noteB) {
+    const aDate = new Date(noteA.createdAt);
+    const bDate = new Date(noteB.createdAt);
+    
+    if (sortOrder === 'asc') return bDate - aDate;
+    if (sortOrder === 'desc') return aDate - bDate;
+    return 0; // needs a return. return 0 if sortOrder is neither 'asc' nor 'desc'
+  });
+  setNotes(sortedNotes);
   }
 
   return (
