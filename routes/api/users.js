@@ -5,13 +5,12 @@ const usersCtrl = require('../../controllers/api/users');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
-// *** All paths start with '/api/users' ***
+// ? All paths start with '/api/users' in sever.js
 
 // POST /api/users (create a user - sign up)
 router.post('/', usersCtrl.create);
 // POST /api/users/login
 router.post('/login', usersCtrl.login);
-
 // GET /api/users/check-token
 router.get('/check-token', usersCtrl.checkToken);
 

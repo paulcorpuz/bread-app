@@ -1,24 +1,27 @@
 import sendRequest from "./send-request";
 const BASE_URL = '/api/notes';
+const CHECKTOKEN_URL = '/api/users/check-token';
 
 
-// export async function indexNote(note) {
-//   return sendRequest(BASE_URL, 'GET', note)
-// }
+// ? sendRequest can take 3 parameters...
+// ? return sendRequest(<url>, method = '<GET?>', payload = <?>) 
 
-export async function addNote(note) {
-  return sendRequest(BASE_URL, 'POST', note)
+// * C
+export function create(newNote) {
+  return sendRequest(BASE_URL, 'POST', { newNote });
 }
 
+// * R
+export function index() {
+  return sendRequest(BASE_URL);
+}
 
+// * U
+export function edit(id, editNote) {
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', { editNote });
+}
 
-
-
-
-// export async function login(credentials) {
-//   return sendRequest(LOGIN_URL, 'POST', credentials)
-// }
-
-// export function checkToken() {
-//   return sendRequest(CHECKTOKEN_URL);
-// }
+// * D
+export function deleteNote(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}

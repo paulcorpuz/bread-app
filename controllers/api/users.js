@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const bcrypt = require('bcrypt');
 
-
 module.exports = {
   create,
   login,
@@ -23,15 +22,12 @@ async function create(req, res) {
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw
 // https://www.npmjs.com/package/bcrypt#with-promises
-
 async function login(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) throw new Error();
     const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) throw new Error();
-
-
     // there is a user, there is a match - create the token
     const token = createJWT(user);
     res.json(token);
@@ -48,7 +44,6 @@ function checkToken(req, res) {
 
 
 /*--- Helper Functions --*/
-
 function createJWT(user) {
   return jwt.sign(
     // data payload
