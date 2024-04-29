@@ -1,5 +1,8 @@
-// const User = require('../../models/user');
-const Note = require('../../models/note');
+// const User = require('./models/user.model');
+const Bakery = require('./models/bakery.model');
+// const Review = require('./models/review.model');
+const Notes = require('./models/review.model');
+
 
 module.exports = {
   create,

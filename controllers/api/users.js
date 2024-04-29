@@ -1,5 +1,7 @@
+const User = require('./models/user.model');
+// const Bakery = require('./models/bakery.model');
+// const Review = require('./models/review.model');
 const jwt = require('jsonwebtoken');
-const User = require('../../models/user');
 const bcrypt = require('bcrypt');
 
 module.exports = {
