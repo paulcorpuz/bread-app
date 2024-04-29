@@ -1,33 +1,40 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-
 import './App.css';
-
 import NavBar from '../../components/NavBar/NavBar';
-import AuthPage from '../AuthPage/AuthPage';
+// import AuthPage from '../AuthPage/AuthPage';
+import SignUpPage from '../SignUpPage/SignUpPage';
+import LoginPage from '../LoginPage/LoginPage';
 import NotesPage from '../NotesPage/NotesPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
+
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
   return (
     <main className="App">
-      { user ?
-        <>
-          <NavBar user={user} setUser={setUser} />
-
-          <Routes>
-            {/* --- Route components go here --- */}
+      <NavBar user={user} setUser={setUser} />
+      <Routes>
+        {user ? (
+          <>
+            {/* Logged-in user routes */}
             <Route path='/' element={< NotesPage />} />
-          </Routes>
-        </>
-        :
-        <AuthPage setUser={setUser} />
-      }
+            <Route path='/profile' element={< ProfilePage user={user} setUser={setUser}/>} />
+          </>
+        ) : (
+          <>
+            {/* Logged-out user routes */}
+            <Route path='/signup' element={<SignUpPage setUser={setUser} />} />
+            <Route path='/login' element={<LoginPage setUser={setUser} />} />
+          </>
+        )}
+      </Routes>
     </main>
   );
 }
+
 
 /* === Notes === */
 // export default function App

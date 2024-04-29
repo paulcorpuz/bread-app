@@ -53,34 +53,37 @@ const bakerySchema = new Schema({
   },
   imageUrl: {
     type: String,
-},
-  categories: {
-    type: String,
-    enum: ["Bread", "Desserts", "Pastries", "Gluten-free", "Delivery", "Vegan"],
-    default: "Bread",
-},
-location: {
-  type: {
-    type: String,
-    enum: ['Point'],
-    required: true
   },
-  coordinates: {
-    type: [Number],
-    required: true
-  }
-},
-rating: {
-  type: Number,
-  default: 0
-},
-reviews: [reviewSchema],
-user: {
-  type: Schema.Types.ObjectId,
-  ref: 'User',
-},
+    categories: {
+      type: String,
+      enum: ["Bread", "Desserts", "Pastries", "Gluten-free", "Delivery", "Vegan"],
+      default: "Bread",
+  },
+  location: {
+    type: {
+      type: String,
+      enum: ['Point'],
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true
+    }
+  },
+  rating: {
+    type: Number,
+    default: 0
+  },
+  reviews: [reviewSchema],
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  googleapiID: {
+    type: String,
+  },
 }, {
-  timestamps: true
+    timestamps: true
 });
 
 module.exports = mongoose.model('Bakery', bakerySchema);

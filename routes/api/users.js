@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usersCtrl = require('../../controllers/api/users');
 // require the authorization middleware function
-const ensureLoggedIn = require('../../config/ensureLoggedIn');
+// const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
 // ? All paths start with '/api/users' in sever.js
