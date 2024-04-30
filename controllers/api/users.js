@@ -6,6 +6,7 @@ module.exports = {
   create,
   login,
   checkToken,
+  edit,
 };
 
 
@@ -52,3 +53,62 @@ function createJWT(user) {
     { expiresIn: '24h' }
   );
 }
+
+
+
+
+// * C
+// * R
+
+// * U
+// async function edit(req, res) {
+//   try {
+//     const user = await User.findById( req.params.id );
+//     const {name, email, bio, profilePic } = req.body;
+//     user.name = name
+//     user.email= email
+//     user.bio = bio
+//     user.profilePic = profilePic
+//     // Save NOT create
+//     await user.save();
+//     res.json(user);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// }
+
+
+async function edit(req, res) {
+  try {
+    const { name, email, bio, profilePic } = req.body;
+    const updatedFields = {};
+    if (name) updatedFields.name = name;
+    if (email) updatedFields.email = email;
+    if (bio) updatedFields.bio = bio;
+    if (profilePic) updatedFields.profilePic = profilePic;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      updatedFields,
+      { new: true }
+    );
+
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+// * D
+
+// https://medium.com/@findingalberta/what-the-fffff-findbyidandupdate-mongoose-107219d5f90
+// It really is that simple. Call .findByIdAndUpdate( id, req.body, {new: true}, (err, data) => {…}) and you’re aces!

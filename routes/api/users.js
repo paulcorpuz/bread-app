@@ -15,4 +15,12 @@ router.post('/login', usersCtrl.login);
 router.get('/check-token', usersCtrl.checkToken);
 
 
+// * U
+// PUT /api/users/:id
+router.put('/:id', usersCtrl.edit);
+
+
+
+
+
 module.exports = router;

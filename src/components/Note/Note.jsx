@@ -2,7 +2,6 @@ import { useState } from "react";
 import * as notesAPI from "../../utilities/notes-api";
 
 
-
 export default function Note({ note, notes, setNotes }) {
   const [visible, setVisible] = useState(false)
   const [editNote, setEditNote] = useState(note.text)
@@ -10,8 +9,8 @@ export default function Note({ note, notes, setNotes }) {
 
   const date = new Date(note.createdAt)
 
-  // Edit note
-  function handleChange(evt) {
+  // Edit Note
+  function handleChangeEdit(evt) {
     setEditNote(evt.target.value);
     setError('');
   }
@@ -44,6 +43,7 @@ export default function Note({ note, notes, setNotes }) {
 
   return (
     <main className="form-container">
+      <h1>Note Component</h1>
       <h2>
         {date.toLocaleString([], {
           // dateStyle: 'medium',
@@ -62,7 +62,7 @@ export default function Note({ note, notes, setNotes }) {
           <label>Edit Note</label>
           <input
             value={editNote}
-            onChange={handleChange}
+            onChange={handleChangeEdit}
           />
           <button className="submit" type="submit">Save Edit</button>
         </form>

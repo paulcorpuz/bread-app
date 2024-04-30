@@ -28,9 +28,11 @@ const port = process.env.PORT || 3001;
 // app.use('/api/users', require('./routes/index'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/notes', require('./routes/api/notes'));
-
-// app.use('/api/bakeries', require('./routes/api/bakeries'));
+app.use('/api/bakeries', require('./routes/api/bakeries'));
 // app.use('/api/reviews', require('./routes/api/reviews'));
+
+
+
 
 
 // The following "catch all" route (note the *) is necessary

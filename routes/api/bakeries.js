@@ -1,26 +1,26 @@
-// const express = require('express');
-// const router = express.Router();
-// const bakeriesCtrl = require('../../controllers/api/bakeries');
-// // require the authorization middleware function
+const express = require('express');
+const router = express.Router();
+const bakeriesCtrl = require('../../controllers/api/bakeries');
+// require the authorization middleware function
 // const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
 
-// // ? All paths start with '/api/bakeries' in sever.js
+// ? All paths start with '/api/bakeries' in sever.js
 
 // // * C
 // // POST /api/bakeries
 // router.post('/', ensureLoggedIn, bakeriesCtrl.create);
 
-// // * R
-// // GET /api/bakeries
+// * R
+// GET /api/bakeries
 // router.get('/', bakeriesCtrl.index);
 
 // router.get('/', bakeriesCtrl.index);
 
 
-// // * U
-// // PUT /api/bakeries/:id
+// * U
+// PUT /api/bakeries/:id
 // router.put('/:id', ensureLoggedIn, bakeriesCtrl.edit);
 
 // // * D
@@ -29,12 +29,15 @@
 
 
 
+// * Fetch
+router.get('/search', bakeriesCtrl.fetchBakeries);
+
+// * Add Bakery
+router.post('/', bakeriesCtrl.addBakery);
 
 
 
 
 
 
-
-
-// module.exports = router;
+module.exports = router;

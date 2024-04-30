@@ -17,8 +17,8 @@ const reviewSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
-  userName: String,
-  userAvatar: String,
+  // userName: String,
+  // userAvatar: String,
 }, {
   timestamps: true
 });
@@ -79,7 +79,7 @@ const bakerySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
-  googleapiID: {
+  googlePlaceId: {
     type: String,
   },
 }, {

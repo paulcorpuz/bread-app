@@ -14,3 +14,15 @@ export async function login(credentials) {
 export function checkToken() {
   return sendRequest(CHECKTOKEN_URL);
 }
+
+
+// * C
+
+// * R
+
+// * U
+export function edit(id, editProfile) {
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', editProfile);
+}
+
+// * D

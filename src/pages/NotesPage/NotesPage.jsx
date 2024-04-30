@@ -44,11 +44,12 @@ export default function NotesPage() {
 
   return (
     <main className='NotesPage'>
+      <h1>Notes Page</h1>
+      <h2>has 2 compo 'add note' 'note list' inside of note list is note </h2>
       <NoteAddForm notes={notes} setNotes={setNotes} sortOrder={sortOrder} />
       {
         notes.length !== 0 ? 
         <div>
-          <h1>Notes Page</h1>
           <button onClick={handleSort}>
             {sortOrder === 'desc' ? 'Descending Order' : 'Ascending Order'}
           </button>

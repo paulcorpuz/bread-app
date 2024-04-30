@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
 const BASE_URL = '/api/notes';
-const CHECKTOKEN_URL = '/api/users/check-token';
+// const CHECKTOKEN_URL = '/api/users/check-token';
 
 
 // ? sendRequest can take 3 parameters...

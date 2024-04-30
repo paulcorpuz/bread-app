@@ -28,7 +28,7 @@ export default function NoteAddForm({ sortOrder, notes, setNotes }) {
 
   return (
     <main className="NoteAddForm">
-      <h1>Add Note</h1>
+      <h1>Add Note Component</h1>
       <div className="form-container">
         <form onSubmit={handleSubmit} >
           <label>Note</label>

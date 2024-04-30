@@ -16,6 +16,7 @@ export default function NotesList({ notes, setNotes }) {
 
   return (
     <main className="NotesList">
+      <h1>Notes List Component</h1>
       {note}
     </main>
   );
