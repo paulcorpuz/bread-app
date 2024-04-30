@@ -8,7 +8,8 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import LoginPage from '../LoginPage/LoginPage';
 import NotesPage from '../NotesPage/NotesPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
-
+import AboutPage from '../AboutPage/AboutPage';
+import BakeriesPage from '../BakeriesPage/BakeriesPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -17,6 +18,9 @@ export default function App() {
     <main className="App">
       <NavBar user={user} setUser={setUser} />
       <Routes>
+        {/* Logged-in and Logged-out user routes */}
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='/bakeries' element={<BakeriesPage />} />
         {user ? (
           <>
             {/* Logged-in user routes */}

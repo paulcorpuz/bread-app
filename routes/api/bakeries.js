@@ -29,15 +29,15 @@ const bakeriesCtrl = require('../../controllers/api/bakeries');
 
 
 
-// * Fetch
-router.get('/search', bakeriesCtrl.fetchBakeries);
+// * Fetch -search Google Places API
+router.get('/search', bakeriesCtrl.searchBakeries);
 
 // * Add Bakery
+router.get('/', bakeriesCtrl.getBakeries);
+
+
 router.post('/', bakeriesCtrl.addBakery);
 
-
-
-
-
+router.delete('/:id', bakeriesCtrl.removeBakery);
 
 module.exports = router;

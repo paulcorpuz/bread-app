@@ -1,48 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import Bakery from '../../../components/bakery/Bakery';
-import * as bakeriesAPI from '../../../utilities/bakeries-api';
+import { useState, useEffect } from 'react';
+import { fetchBakeriesFromGoogle } from '../../utilities/bakeries-api';
+import BakeriesList from '../../components/BakeriesList/BakeriesList';
 
-function BakeriesPage() {
+export default function BakeriesPage() {
   const [bakeries, setBakeries] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    async function fetchBakeries() {
-      try {
-        const data = await bakeriesAPI.fetchBakeriesFromGoogle();
-        setBakeries(data);
-      } catch (error) {
-        console.error('Error fetching bakeries:', error);
-      }
-    }
-    fetchBakeries();
-  }, []);
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
-  async function handleSaveBakery(bakeryData) {
+  const handleSearch = async (event) => {
+    event.preventDefault();
     try {
-      const savedBakery = await fetch('/api/bakeries', {
+      const data = await fetchBakeriesFromGoogle(searchQuery);
+      setBakeries(data);
+    } catch (error) {
+      console.error('Error fetching bakeries:', error);
+    }
+  };
+
+  const handleAddBakery = async (bakery) => {
+    try {
+      const response = await fetch('/api/bakeries', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(bakeryData)
+        body: JSON.stringify(bakery)
       });
-      console.log('Saved bakery:', savedBakery);
+      const addedBakery = await response.json();
+      console.log('Bakery added:', addedBakery);
     } catch (error) {
-      console.error('Error saving bakery:', error);
+      console.error('Error adding bakery:', error);
     }
-  }
+  };
+
+  const handleRemoveBakery = async (bakeryId) => {
+    try {
+      await fetch(`/api/bakeries/${bakeryId}`, {
+        method: 'DELETE'
+      });
+      console.log('Bakery removed:', bakeryId);
+      // Optionally, you can remove the bakery from the local state as well
+      setBakeries(bakeries.filter(bakery => bakery._id !== bakeryId));
+    } catch (error) {
+      console.error('Error removing bakery:', error);
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, []); // Fetch bakeries when component mounts
 
   return (
-    <div>
+    <main>
       <h1>Bakeries in Seattle</h1>
-      {bakeries.map(bakery => (
-        <div key={bakery.place_id}>
-          <Bakery bakery={bakery} />
-          <button onClick={() => handleSaveBakery(bakery)}>Save Bakery</button>
+      <form onSubmit={handleSearch}>
+        <div>
+          <input
+            type="text"
+            placeholder="Search bakeries..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <button type="submit">Search</button>
         </div>
-      ))}
-    </div>
+      </form>
+      < BakeriesList
+        bakeries={bakeries}
+        onAddBakery={handleAddBakery}
+        onRemoveBakery={handleRemoveBakery}
+      />
+    </main>
   );
 }
-
-export default BakeriesPage;

@@ -1,16 +1,17 @@
-const Bakery = require('../../models/bakery');
 // const User = require('../../models/user')
+const Bakery = require('../../models/bakery');
 const fetch = require('node-fetch');
 const token = process.env.GOOGLE_PLACES_KEY;
-
 
 module.exports = {
   // create,
   // index,
   // edit,
   // delete: deleteBakery,
-  fetchBakeries,
+  searchBakeries,
+  getBakeries,
   addBakery,
+  removeBakery,
 };
 
 
@@ -60,33 +61,66 @@ module.exports = {
 // }
 
 
-async function fetchBakeries(req, res) {
+async function searchBakeries(req, res) {
   try {
-    const response = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=bakeries+in+seattle&key=${token}`);
-    const bakery = await response.json();
-    res.json(bakery);
+    const searchQuery = req.query.query || 'bakeries in seattle';
+    const location = req.query.location;
+    const radius = req.query.radius;
+
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchQuery}&location=${location}&radius=${radius}&type=bakery&key=${token}`
+    );
+
+    const data = await response.json();
+    res.json(data.results);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to get that bread (fetch bakeries)' });
+    res.status(500).json({ message: 'Failed to fetch bakeries' });
   }
 }
 
-async function addBakery(req, res, next) {
+async function getBakeries(req, res) {
   try {
-    const bakeryData = req.body;
+    const bakeries = await Bakery.find({});
+    res.json(bakeries);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+// look up google places doc on how to use images
+// look up google places doc on types/categories
+async function addBakery(req, res) {
+  try {
+    const bakeryData = {
+      name: req.body.name,
+      address: req.body.formatted_address,
+      city: req.body.city || '',
+      state: req.body.state || '',
+      zipCode: req.body.zip_code || '',
+      phoneNumber: req.body.formatted_phone_number || '',
+      website: req.body.website || '',
+      rating: req.body.rating || 0,
+      googlePlaceId: req.body.place_id,
+    };
+
     const bakery = new Bakery(bakeryData);
     const savedBakery = await bakery.save();
     res.json(savedBakery);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to add bakery', error });
+      res.status(500).json({ message: 'Failed to add bakery', error });
+    }
   }
-}
 
 
-
-
-
-
-
+  async function removeBakery(req, res) {
+    try {
+      const bakeryId = req.params.id;
+      await Bakery.findByIdAndDelete(bakeryId);
+      res.json({ message: 'Bakery removed successfully' });
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to remove bakery', error });
+    }
+  }
 
 
 // from Shopping Cart Lesson 1
