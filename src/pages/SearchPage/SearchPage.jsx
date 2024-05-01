@@ -1,5 +1,3 @@
-// src/pages/SearchPage.js
-import React from 'react';
 import BakerySearch from '../../components/BakerySearch/BakerySearch';
 
 export default function SearchPage() {

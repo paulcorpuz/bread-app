@@ -7,8 +7,8 @@ const BASE_URL = '/api/bakeries';
 // ? return sendRequest(<url>, method = '<GET?>', payload = <?>) 
 
 // * C
-export function create(newBakery) {
-  return sendRequest(BASE_URL, 'POST', { newBakery });
+export function create(bakery) {
+  return sendRequest(BASE_URL, 'POST', bakery);
 }
 
 // * R

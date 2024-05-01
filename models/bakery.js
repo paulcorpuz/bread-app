@@ -21,14 +21,11 @@ const reviewSchema = new Schema({
 });
 
 const bakerySchema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String },
   address: { type: String },
-  city: {type: String },
-  state: { type: String },
-  zipCode: { type: String },
-  phoneNumber: { type: String },
-  website: { type: String },
-  imageUrl: {type: String },
+  // phoneNumber: { type: String },
+  // website: { type: String },
+  // imageUrl: {type: String },
   rating: {
     type: Number,
     default: 0
@@ -39,6 +36,7 @@ const bakerySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
+  userName:{ type: String },
 }, {
     timestamps: true
 });

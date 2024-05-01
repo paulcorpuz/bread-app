@@ -17,18 +17,18 @@ module.exports = {
 // look up google places doc on types/categories
 // * C
 async function create(req, res) {
+  console.log('create working?')
   try {
     const bakeryData = {
-      name: req.body.name,
-      address: req.body.formatted_address,
-      city: req.body.city || '',
-      state: req.body.state || '',
-      zipCode: req.body.zip_code || '',
-      phoneNumber: req.body.formatted_phone_number || '',
-      website: req.body.website || '',
+      name: req.body.name || '',
+      address: req.body.formatted_address || '',
+      // phoneNumber: req.body.formatted_phone_number || '',
+      // website: req.body.website || '',
       rating: req.body.rating || 0,
       googlePlaceId: req.body.place_id,
-      imageUrl: req.body.photo_reference || '',
+      // imageUrl: req.body.photo_reference || '',
+      userId: req.user._id,
+      userName: req.user.name,
     };
     
     const bakery = new Bakery(bakeryData);
