@@ -1,9 +1,6 @@
-// import { useState, useEffect } from "react";
-// import * as notesAPI from '../../utilities/users-api';
-
+import Profile from "../../components/Profile/Profile";
 import './ProfilePage.css';
 
-import Profile from "../../components/Profile/Profile";
 
 
 // --> takes prop from App Page ()

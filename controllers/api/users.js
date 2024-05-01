@@ -43,41 +43,6 @@ function checkToken(req, res) {
   res.json(req.exp);
 }
 
-
-/*--- Helper Functions --*/
-function createJWT(user) {
-  return jwt.sign(
-    // data payload
-    { user },
-    process.env.SECRET,
-    { expiresIn: '24h' }
-  );
-}
-
-
-
-
-// * C
-// * R
-
-// * U
-// async function edit(req, res) {
-//   try {
-//     const user = await User.findById( req.params.id );
-//     const {name, email, bio, profilePic } = req.body;
-//     user.name = name
-//     user.email= email
-//     user.bio = bio
-//     user.profilePic = profilePic
-//     // Save NOT create
-//     await user.save();
-//     res.json(user);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// }
-
-
 async function edit(req, res) {
   try {
     const { name, email, bio, profilePic } = req.body;
@@ -99,16 +64,16 @@ async function edit(req, res) {
   }
 }
 
+/*--- Helper Functions --*/
+function createJWT(user) {
+  return jwt.sign(
+    // data payload
+    { user },
+    process.env.SECRET,
+    { expiresIn: '24h' }
+  );
+}
 
-
-
-
-
-
-
-
-
-// * D
 
 // https://medium.com/@findingalberta/what-the-fffff-findbyidandupdate-mongoose-107219d5f90
 // It really is that simple. Call .findByIdAndUpdate( id, req.body, {new: true}, (err, data) => {…}) and you’re aces!

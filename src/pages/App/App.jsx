@@ -4,12 +4,14 @@ import { getUser } from '../../utilities/users-service';
 import './App.css';
 import NavBar from '../../components/NavBar/NavBar';
 // import AuthPage from '../AuthPage/AuthPage';
-import SignUpPage from '../SignUpPage/SignUpPage';
-import LoginPage from '../LoginPage/LoginPage';
-import NotesPage from '../NotesPage/NotesPage';
-import ProfilePage from '../ProfilePage/ProfilePage';
+import HomePage from '../HomePage/HomePage';
 import AboutPage from '../AboutPage/AboutPage';
 import BakeriesPage from '../BakeriesPage/BakeriesPage';
+import NotesPage from '../NotesPage/NotesPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
+import SignUpPage from '../SignUpPage/SignUpPage';
+import LoginPage from '../LoginPage/LoginPage';
+import SearchPage from '../SearchPage/SearchPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -17,14 +19,17 @@ export default function App() {
   return (
     <main className="App">
       <NavBar user={user} setUser={setUser} />
+
       <Routes>
         {/* Logged-in and Logged-out user routes */}
+        <Route path='/' element={< HomePage />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/bakeries' element={<BakeriesPage />} />
+        <Route path='/notes' element={<NotesPage />} />
         {user ? (
           <>
             {/* Logged-in user routes */}
-            <Route path='/' element={< NotesPage />} />
+            <Route path='/search' element={< SearchPage/>} />
             <Route path='/profile' element={< ProfilePage user={user} setUser={setUser}/>} />
           </>
         ) : (
@@ -35,6 +40,7 @@ export default function App() {
           </>
         )}
       </Routes>
+
     </main>
   );
 }

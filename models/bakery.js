@@ -3,10 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const reviewSchema = new Schema({
-  content: { 
-    type: String, 
-    required: true 
-  },
+  content: { type: String, required: true },
   rating: { 
     type: Number, 
     min: 1, 
@@ -23,48 +20,24 @@ const reviewSchema = new Schema({
   timestamps: true
 });
 
-
 const bakerySchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  address: {
-    type: String,
-    required: true
-  },
-  city: {
-    type: String,
-    required: true
-  },
-  state: {
-    type: String,
-    required: true
-  },
-  zipCode: {
-    type: String,
-    required: true
-  },
-  phoneNumber: {
-    type: String,
-  },
-  website: {
-    type: String,
-  },
-  imageUrl: {
-    type: String,
-  },
+  name: { type: String, required: true },
+  address: { type: String },
+  city: {type: String },
+  state: { type: String },
+  zipCode: { type: String },
+  phoneNumber: { type: String },
+  website: { type: String },
+  imageUrl: {type: String },
   rating: {
     type: Number,
     default: 0
   },
+  googlePlaceId: { type: String },
   reviews: [reviewSchema],
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-  },
-  googlePlaceId: {
-    type: String,
   },
 }, {
     timestamps: true

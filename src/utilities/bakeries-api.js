@@ -1,21 +1,37 @@
+import sendRequest from "./send-request";
+const BASE_URL = '/api/bakeries';
+// const CHECKTOKEN_URL = '/api/users/check-token';
 // const token = process.env.REACT_APP_GOOGLE_PLACES_KEY;
 
-export async function fetchBakeriesFromGoogle(searchQuery) {
-  const seattleLocation = '47.6062,-122.3321'; // Latitude and longitude of Seattle
-  const radius = '50000';
+// ? sendRequest can take 3 parameters...
+// ? return sendRequest(<url>, method = '<GET?>', payload = <?>) 
 
-  const response = await fetch(`/api/bakeries/search?query=${searchQuery}&location=${seattleLocation}&radius=${radius}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+// * C
+export function create(newBakery) {
+  return sendRequest(BASE_URL, 'POST', { newBakery });
+}
 
-  const data = await response.json();
-  return data;
+// * R
+export function index() {
+  return sendRequest(BASE_URL);
+}
+
+// * U
+export function edit(id, editBakery) {
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', { editBakery });
+}
+
+// * D
+export function deleteBakery(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
 
 
+// * Search export from Backend
+export function searchBakeries(searchQuery, location, radius) {
+  const url = `${BASE_URL}/search?query=${searchQuery}&location=${location}&radius=${radius}`;
+  return sendRequest(url);
+}
 
 
 

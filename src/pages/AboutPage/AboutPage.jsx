@@ -4,7 +4,7 @@ export default function AboutPage() {
 
   return (
     <main>
-      <h1>about page, do i need this</h1>
+      <h1>about page for socials?</h1>
     </main>
   );
 }
