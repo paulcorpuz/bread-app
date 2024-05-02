@@ -1,11 +1,14 @@
-import './Bakery.css';
 
-export default function Bakery() {
-
+export default function Bakery({ bakery, setBakeries }) {
   return (
-    <main className="Bakery">
-      <h1>Bakery</h1>
-    </main>
+    <div className="bakery">
+      <h3>{bakery.name}</h3>
+      {/* <img
+          src={}
+          alt={bakery.name}
+          className="bakery-photo"
+        /> */}
+      <p>{bakery.address}</p>
+    </div>
   );
-};
-
+}

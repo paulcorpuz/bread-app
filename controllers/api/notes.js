@@ -25,12 +25,17 @@ async function create(req, res) {
 // * R
 async function index(req, res) {
   try {
-    const notes = await Note.find({});
+    const notes = await Note.find({}).sort({"updatedAt": -1})
     res.json(notes);
   } catch (err) {
     res.status(400).json(err);
   }
 }
+
+
+
+
+
 
 // * U
 async function edit(req, res) {

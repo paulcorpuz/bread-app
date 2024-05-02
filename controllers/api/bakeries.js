@@ -13,8 +13,7 @@ module.exports = {
 };
 
 
-// look up google places doc on how to use images
-// look up google places doc on types/categories
+// look up google places doc on how to use images. additional types /categories -- missing data
 // * C
 async function create(req, res) {
   console.log('create working?')
@@ -74,20 +73,34 @@ async function deleteBakery(req, res) {
 }
 
 
-// ------------------- FIXME:
+// * Search Bakeries ------
 async function searchBakeries(req, res) {
   try {
     const searchQuery = req.query.query || 'bakeries in seattle';
     const location = req.query.location;
     const radius = req.query.radius;
-    
+
+    // Query ! for "Basic, Place Text Search data from Google"
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchQuery}&location=${location}&radius=${radius}&type=bakery&key=${token}`
     );
-    console.log('from controller')
+    console.log('---> from controller')
     const data = await response.json();
-    console.log(data)
+    console.log('---> Query Results #1', data)
 
+    // Query 2 for "Place Detail data from Google"
+    const placeIds = data.results.map(function(result) {
+      return result.place_id;
+    });
+    console.log('---> Query Results #4 for place_id', placeIds)
+    
+    const detailsData = await Promise.all(placeIds.map(async function(placeId) {
+      const detailsResponse = await fetch(
+        `https://maps.googleapis.com/maps/api/place/details/json?fields=name,formatted_address,opening_hours,delivery,current_opening_hours,formatted_phone_number,photos,website,rating&place_id=${placeId}&key=${token}`
+      );
+      return detailsResponse.json();
+    }));
+    console.log('---> Query Results #5 for Places Details', detailsData)
     res.json(data.results);
   } catch (error) {
     res.status(500).json({ message: 'Failed to fetch bakeries' });
@@ -96,9 +109,22 @@ async function searchBakeries(req, res) {
 
 
 
+// ? Notes -----
 
+// Query for the photo reference
+    // const photosReferences = data.results.map(function(result) {
+    //   console.log(result.photos[0].photo_reference)
+    //   return result.photos[0].photo_reference;
+    // });
+    // console.log('---> Query Results #2 for photo_reference(s)', photosReferences)
 
-
+    // const PhotosData = await Promise.all(photosReferences.map(async function(photoReference) {
+    //   const photosResponse = await fetch(
+    //     `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoReference}&key=${token}`
+    //   );
+    //   return photosResponse.json();
+    // }));
+    // console.log('---> Query Results #3 for Photo Images', PhotosData)
 
 
 

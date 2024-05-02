@@ -16,13 +16,16 @@ export default function BakeryCard({ bakery }) {
   return (
     <main>
       {/* FIXME: */}
-      {/* {bakery.photos && bakery.photos.length > 0 && (
+      {bakery.photos && bakery.photos.length > 0 && (
         <img
-          src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${bakery.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
+          src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${bakery.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_PLACES_KEY}`}
+          
+
+
           alt={bakery.name}
           className="bakery-photo"
         />
-      )} */}
+      )}
       <div>
         <h1>{bakery.name}</h1>
         {bakery.formatted_address && <h3>Address: {bakery.formatted_address}</h3>}
