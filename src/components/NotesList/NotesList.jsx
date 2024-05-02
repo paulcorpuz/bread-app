@@ -5,19 +5,17 @@ import './NotesList.css';
 
 // --> takes prop from NotesPage (notes, setNotes)
 export default function NotesList({ notes, setNotes }) {
-  const note = notes.map(n =>
-    <Note
-      notes={notes}
-      setNotes={setNotes}
-      note={n}
-      key={n._id}
-    />
-  );
-
   return (
     <main className="NotesList">
       <h1>Notes List Component</h1>
-      {note}
+      {notes.map(note => (
+        <Note
+          notes={notes}
+          setNotes={setNotes}
+          note={note}
+          key={note._id}
+        />
+      ))}
     </main>
   );
 }

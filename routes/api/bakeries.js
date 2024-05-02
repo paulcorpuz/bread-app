@@ -14,10 +14,6 @@ router.post('/', ensureLoggedIn, bakeriesCtrl.create);
 // * R "get bakeries"
 // GET /api/bakeries
 router.get('/', bakeriesCtrl.index);
-// * R "get (specific) bakery details"
-// GET /bakeries/:id
-router.get('/:id', bakeriesCtrl.show)
-
 
 // * U
 // PUT /api/bakeries/:id
@@ -30,6 +26,14 @@ router.delete('/:id', ensureLoggedIn, bakeriesCtrl.delete);
 
 // * Fetch -search Google Places API
 router.get('/search', bakeriesCtrl.searchBakeries);
+
+
+
+
+// * R "get (specific) bakery details"
+// GET /bakeries/:id
+router.get('/:id', bakeriesCtrl.show)
+
 
 
 module.exports = router;

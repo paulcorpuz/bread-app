@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as usersAPI from "../../utilities/users-api";
+import * as usersApi from "../../utilities/users-api";
 
 import './ProfileEditForm.css';
 
@@ -24,7 +24,7 @@ export default function ProfileEditForm({ user, setUser }) {
   async function handleSubmitEdit(evt) {
     evt.preventDefault();
     try {
-      const updatedUser = await usersAPI.edit(user._id, editProfile);
+      const updatedUser = await usersApi.edit(user._id, editProfile);
       setUser(updatedUser); // Update the user state with the updated user data
     } catch (error) {
       setError('Failed to update profile. Please try again.');
