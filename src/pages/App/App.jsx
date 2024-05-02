@@ -6,12 +6,14 @@ import NavBar from '../../components/NavBar/NavBar';
 // import AuthPage from '../AuthPage/AuthPage';
 import HomePage from '../HomePage/HomePage';
 import AboutPage from '../AboutPage/AboutPage';
-import BakeriesPage from '../BakeriesPage/BakeriesPage';
+import BakeriesListPage from '../BakeriesListPage/BakeriesListPage';
 import NotesPage from '../NotesPage/NotesPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LoginPage from '../LoginPage/LoginPage';
 import SearchPage from '../SearchPage/SearchPage';
+import BakeryShowPage from '../BakeryShowPage/BakeryShowPage';
+
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -24,7 +26,8 @@ export default function App() {
         {/* Logged-in and Logged-out user routes */}
         <Route path='/' element={< HomePage />} />
         <Route path='/about' element={<AboutPage />} />
-        <Route path='/bakeries' element={<BakeriesPage />} />
+        <Route path='/bakeries' element={<BakeriesListPage />} />
+        <Route path="/bakeries/:id" element={<BakeryShowPage />} />
         <Route path='/notes' element={<NotesPage />} />
         {user ? (
           <>

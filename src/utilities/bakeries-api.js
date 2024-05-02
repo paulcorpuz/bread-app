@@ -15,6 +15,10 @@ export function create(bakery) {
 export function index() {
   return sendRequest(BASE_URL);
 }
+export function show(id) {
+  return sendRequest(`${BASE_URL}/${id}`);
+}
+
 
 // * U
 export function edit(id, editBakery) {

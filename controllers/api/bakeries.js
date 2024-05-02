@@ -7,6 +7,7 @@ const token = process.env.GOOGLE_PLACES_KEY;
 module.exports = {
   create,
   index,
+  show,
   edit,
   delete: deleteBakery,
   searchBakeries,
@@ -48,6 +49,22 @@ async function index(req, res) {
     res.status(400).json(err);
   }
 }
+
+// show renders specific bakery from mongo based on the req.params.id, aka the ID from the URL route (unique identifier) 
+async function show(req, res) {
+  try {
+    const bakery = await Bakery.findById(req.params.id);
+    res.json(bakery);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+
+
+
+
+
 
 
 // * U

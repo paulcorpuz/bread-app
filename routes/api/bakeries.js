@@ -10,9 +10,14 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 // POST /api/bakeries
 router.post('/', ensureLoggedIn, bakeriesCtrl.create);
 
+
 // * R "get bakeries"
 // GET /api/bakeries
 router.get('/', bakeriesCtrl.index);
+// * R "get (specific) bakery details"
+// GET /bakeries/:id
+router.get('/:id', bakeriesCtrl.show)
+
 
 // * U
 // PUT /api/bakeries/:id

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { searchBakeries } from '../../utilities/bakeries-api';
-import BakeryCard from '../BakeryCard/BakeryCard';
+import SearchCard from '../SearchCard/SearchCard';
 
-export default function BakerySearch() {
+export default function SearchGrid() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = async () => {
+  const handleSearch = async function() {
     try {
-      const location = 'Seattle, WA'
-      const radius = 50000 //radius in meters 
+      const location = 'Seattle, WA';
+      const radius = 50000; // radius in meters
       const results = await searchBakeries(searchQuery, location, radius);
       setSearchResults(results);
     } catch (error) {
@@ -30,7 +30,7 @@ export default function BakerySearch() {
       {/* style? */}
       <div>
         {searchResults.map((bakery) => (
-          <BakeryCard key={bakery.place_id} bakery={bakery} />
+          <SearchCard key={bakery.place_id} bakery={bakery} />
         ))}
       </div>
     </main>

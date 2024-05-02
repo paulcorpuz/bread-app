@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import * as BakeriesApi from '../../utilities/bakeries-api';
 
-import BakeriesList from "../../components/BakeriesList/BakeriesList";
+import BakeriesList from "../../components/BakeriesGrid/BakeriesGrid";
 
 
-export default function BakeriesPage() {
+export default function BakeriesListPage() {
   const [bakeries, setBakeries] = useState([]);
 
   useEffect(function() {
@@ -22,7 +22,7 @@ export default function BakeriesPage() {
 
   return (
     <main>
-      <h1>This is the Bakery Page </h1>
+      <h1>This is the BakeryListPage </h1>
       {
         bakeries.length !== 0 ? 
         <div>
