@@ -8,10 +8,11 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // * C
 // POST /bakeries/:id/reviews (create review for a bakery)
-router.post('/bakeries/:id/reviews', ensureLoggedIn, reviewsCtrl.create);
+router.post('/:id/reviews', ensureLoggedIn, reviewsCtrl.create);
 
 // * D
 // DELETE /reviews/id 
-router.delete('/reviews/:id', ensureLoggedIn, reviewsCtrl.delete);
+router.delete('/:bakeryId/:reviewId', ensureLoggedIn, reviewsCtrl.delete);
+
 
 module.exports = router;

@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as bakeriesApi from "../../utilities/bakeries-api";
 
-// import ReviewAddForm from "../../components/ReviewAddForm/ReviewAddForm";
-import ReviewsGrid from "../../components/ReviewsGrid/ReviewsGrid";
-
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
+import ReviewCard from "../../components/ReviewCard/ReviewCard";
 
 export default function BakeryShowPage() {
   const [bakery, setBakery] = useState(null);
@@ -14,69 +13,55 @@ export default function BakeryShowPage() {
 
   //getting Bakery info
   useEffect(function() {
-    async function getBakery() {
+    async function fetchBakery() {
       try {
         const bakeryData = await bakeriesApi.show(id);
         setBakery(bakeryData);
+        setReviews(bakeryData.reviews);
       } catch (error) {
         console.error("Failed to fetch bakery details", error);
       }
     }
-    getBakery();
-  }, [id]);
+    fetchBakery();
+  }, [id]);  
 
+  
+  function handleReviewCreated(newReview) {
+    setReviews([...reviews, newReview]);
+  }
 
-  // getting Review info
-  useEffect(function() {
-    async function getReviews() {
-      const reviews = await bakeriesApi.index();
-      setReviews(reviews);
-    }
-    
-    getReviews()
-  }, []);
-
+  function handleReviewDeleted(reviewId) {
+    setReviews(reviews.filter((review) => review._id !== reviewId));
+  }
   
 
   return (
     <main>
-      <>
-        {bakery ? (
-          <>
-            <h1>{bakery.name}</h1>
-            <h2>Address: {bakery.address}</h2>
-            <h2>Rating: {bakery.rating}</h2>
-            {/* TODO: Add more bakery details */}
-          </>
-        ) : (
-          <p>Loading...</p>
-        )}
+      {bakery ? (
+        <>
+          <h1>{bakery.name}</h1>
+          <h2>Address: {bakery.address}</h2>
+          <h2>Rating: {bakery.rating}</h2>
+          <hr />
 
-      </>
-      
-      <hr />
-      <>
-        <h1>Reviews Header</h1>
-        {
-          reviews.length !== 0 ?
-            <div>
-              <ReviewsGrid reviews={reviews} setReviews={setReviews} />
-            </div>
-            :
-            <h2>No Reviews Yet!</h2>
-        }
-      </>
+          <ReviewForm bakeryId={bakery._id} onReviewCreated={handleReviewCreated} />
+          <hr />
 
+          {reviews.map((review) => (
+            <ReviewCard
+              key={review._id}
+              review={review}
+              bakeryId={bakery._id}
+              onReviewDeleted={handleReviewDeleted}
+            />
+          ))}
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </main>
-
-
-
-
-
-
   );
 }
-
 
 
 
