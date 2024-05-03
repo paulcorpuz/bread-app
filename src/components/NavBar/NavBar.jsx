@@ -1,61 +1,57 @@
-import { Link } from 'react-router-dom';
+import { Flex, Heading, Spacer, Button, Link as ChakraLink, HStack } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
 
 
 // --> takes prop from App Page (user, setUser)
-export default function NavBar({ user, setUser }) { 
+export default function NavBar({ user, setUser }) {
   function handleSignUp() {
     userService.signUp();
   }
 
-
   function handleLogin() {
     userService.login();
   }
-
 
   function handleLogOut() {
     userService.logOut();
     setUser(null);
   }
 
-  
+  const NavStyle ={
+    textAlign: 'center',
+    ':hover': {
+      bg: 'yellow.400',
+    }
+  }
+
+
   return (
-    <nav> 
-      {/* //logged in/out users */}
-      <Link to="/">home</Link>
-      &nbsp; | &nbsp;
-      <Link to="/about">about</Link>
-      &nbsp; | &nbsp;
-      <Link to="/bakeries">bakeries</Link>
-      &nbsp; | &nbsp;
-      <Link to="/notes">notes</Link>
-      &nbsp; --- &nbsp;
+    <Flex as='Nav' p='10px' alignItems='center' gap='10px'>
+        <Heading as='h3'>TestNavBar</Heading>
+        <ChakraLink as={RouterLink} to="/" sx={NavStyle}>home</ChakraLink>
+        <ChakraLink as={RouterLink} to="/bakeries" sx={NavStyle}>bakeries</ChakraLink>
+        <ChakraLink as={RouterLink} to="/about" sx={NavStyle}>aboutREMOVE</ChakraLink>
+        <ChakraLink as={RouterLink} to="/notes" sx={NavStyle}>notes REMOVE</ChakraLink>
+      {user && <ChakraLink as={RouterLink} to="/search" sx={NavStyle}>find bakeries</ChakraLink>}
+      <Spacer />
 
-      {user ? ( 
-        <>
-          {/* Logged-in user */}
+      {user ? (
+        // Logged-in user
+        <HStack spacing='10px'>
           <span>Hi {user.name}!!</span>
-          &nbsp; | &nbsp;
-          <Link to="/search">find bakeries</Link>
-          &nbsp; | &nbsp;
-          <Link to="/profile">profile</Link>
-          &nbsp; | &nbsp;
-          <Link to="/" onClick={handleLogOut}>log out</Link>
-        </>
+          <ChakraLink as={RouterLink} to="/profile" sx={NavStyle}>Profile</ChakraLink>
+          <Button as={RouterLink} to="/" colorScheme="yellow" onClick={handleLogOut}>Log out</Button>
+        </HStack>
       ) : (
-
-        <>
-          {/* Logged-out user */}
-          <Link to="/signup" onClick={handleSignUp}>sign up</Link>
-          &nbsp; | &nbsp;
-          <Link to="/login" onClick={handleLogin}>login</Link>
-        </>
-
+        // Logged-out user
+        <HStack spacing='10px'>
+          <ChakraLink as={RouterLink} to="/signup" onClick={handleSignUp} sx={NavStyle}>Sign up</ChakraLink>
+          <Button as={RouterLink} to="/login" colorScheme="yellow" onClick={handleLogin}>Login</Button>
+        </HStack>
       )}
-    </nav>
 
-
+    </Flex>
   );
 }
 
