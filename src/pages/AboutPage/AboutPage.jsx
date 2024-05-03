@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text } from '@chakra-ui/react'
+import { Box, SimpleGrid } from '@chakra-ui/react'
 
 
 // --> takes prop from App Page ()
@@ -17,19 +17,32 @@ export default function AboutPage() {
   }
 
   return (
-    <Container as='section' maxWidth='4xl' py='20px'>
-      <Heading my="30px" p="10px">What is this? An about page for ants?</Heading>
-      <Text ml="30px">Testing 1 </Text>
-      <Text ml="30px" color="blue.300" fontWeight="bold">Testing 2 </Text>
-      
-      <Box my="30px" p="20px" bg='orange'>
-        <Text ml="30px">Testing 3 </Text>
-      </Box>
+    <SimpleGrid p='10px' columns={4} spacing={10} minChildWidth='250px'>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+      <Box bg='white' h='200px' border='1px solid'></Box>
+
+    </SimpleGrid>
 
 
-      <Box sx={boxStyles}>
-        Hello Paul
-      </Box>
-    </Container>
+
+
+
+
+
+
+
   );
 }
+

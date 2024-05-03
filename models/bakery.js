@@ -21,15 +21,19 @@ const reviewSchema = new Schema({
 });
 
 const bakerySchema = new Schema({
+  googlePlaceId: { type: String },
   name: { type: String },
   address: { type: String },
+  priceLevel: { type: Number },
+  googRating: { type: Number },
+  googUserRatingTotal: { type: Number },
+  openingHours:{ type: Object },
+  businessStatus: { type: String },
+  
   phoneNumber: { type: String },
   website: { type: String },
-  rating: {
-    type: Number,
-    default: 0
-  },
-  googlePlaceId: { type: String },
+  delivery: { type: Boolean },
+
   reviews: [reviewSchema],
   user: {
     type: Schema.Types.ObjectId,

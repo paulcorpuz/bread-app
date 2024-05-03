@@ -28,11 +28,11 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <Flex as='Nav' p='10px' alignItems='center' gap='10px'>
-        <Heading as='h3'>TestNavBar</Heading>
+        <Heading as='h3'>🍞 Pan de Replay</Heading>
         <ChakraLink as={RouterLink} to="/" sx={NavStyle}>home</ChakraLink>
         <ChakraLink as={RouterLink} to="/bakeries" sx={NavStyle}>bakeries</ChakraLink>
-        <ChakraLink as={RouterLink} to="/about" sx={NavStyle}>aboutREMOVE</ChakraLink>
-        <ChakraLink as={RouterLink} to="/notes" sx={NavStyle}>notes REMOVE</ChakraLink>
+        <ChakraLink as={RouterLink} to="/about" sx={NavStyle}>aboutREMOVE?</ChakraLink>
+        <ChakraLink as={RouterLink} to="/notes" sx={NavStyle}>notesREMOVE?</ChakraLink>
       {user && <ChakraLink as={RouterLink} to="/search" sx={NavStyle}>find bakeries</ChakraLink>}
       <Spacer />
 

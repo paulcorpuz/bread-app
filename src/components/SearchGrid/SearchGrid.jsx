@@ -14,6 +14,7 @@ export default function SearchGrid() {
       const location = 'Seattle, WA';
       const radius = 50000; // radius in meters
       const results = await searchBakeries(searchQuery, location, radius);
+      console.log("look",results)
       setSearchResults(results);
     } catch (error) {
       console.error('Error searching bakeries:', error);

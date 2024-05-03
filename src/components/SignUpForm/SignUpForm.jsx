@@ -1,3 +1,10 @@
+// import {
+//   FormControl,
+//   FormLabel,
+//   FormErrorMessage,
+//   FormHelperText,
+// } from '@chakra-ui/react'
+
 import { Component } from 'react';
 import { signUp } from '../../utilities/users-service';
 
@@ -40,7 +47,7 @@ export default class SignUpForm extends Component {
       <main>
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
+            <form>Name</form>
             <input 
               type="text" 
               name="name" 
