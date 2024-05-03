@@ -1,8 +1,6 @@
-// const User = require('../../models/user')
 const Bakery = require('../../models/bakery');
 const fetch = require('node-fetch');
 const token = process.env.GOOGLE_PLACES_KEY;
-
 
 module.exports = {
   create,
@@ -14,19 +12,18 @@ module.exports = {
 };
 
 
-// look up google places doc on how to use images. additional types /categories -- missing data
+// TODO look up google places doc on how to use images. additional types /categories -- missing data
 // * C
 async function create(req, res) {
-  console.log('create working?')
+  // console.log('create working?')
   try {
     const bakeryData = {
       name: req.body.name || '',
       address: req.body.formatted_address || '',
-      // phoneNumber: req.body.formatted_phone_number || '',
-      // website: req.body.website || '',
+      phoneNumber: req.body.formatted_phone_number || '',
+      website: req.body.website || '',
       rating: req.body.rating || 0,
       googlePlaceId: req.body.place_id,
-      // imageUrl: req.body.photo_reference || '',
       userId: req.user._id,
       userName: req.user.name,
     };
@@ -50,6 +47,8 @@ async function index(req, res) {
   }
 }
 
+
+// * R (show)
 // show renders specific bakery from mongo based on the req.params.id, aka the ID from the URL route (unique identifier) 
 async function show(req, res) {
   try {
@@ -59,12 +58,6 @@ async function show(req, res) {
     res.status(400).json(err);
   }
 }
-
-
-
-
-
-
 
 
 // * U
@@ -93,31 +86,33 @@ async function deleteBakery(req, res) {
 // * Search Bakeries ------
 async function searchBakeries(req, res) {
   try {
-    const searchQuery = req.query.query || 'bakeries in seattle';
+    const searchQuery = req.query.query || 'bakery';
     const location = req.query.location;
     const radius = req.query.radius;
 
-    // Query ! for "Basic, Place Text Search data from Google"
+    // Query 1 for "Basic, Place Text Search data from Google"
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchQuery}&location=${location}&radius=${radius}&type=bakery&key=${token}`
     );
     console.log('---> from controller')
     const data = await response.json();
-    console.log('---> Query Results #1', data)
+    console.log('---> Query Results #1 for basic info', data)
 
-    // Query 2 for "Place Detail data from Google"
+    // map across 1st query for place_id
     const placeIds = data.results.map(function(result) {
       return result.place_id;
     });
-    console.log('---> Query Results #4 for place_id', placeIds)
+    console.log('---> Query Results #2 just for place_id', placeIds)
     
+    // Query 2 for "Place Detail data from Google"
     const detailsData = await Promise.all(placeIds.map(async function(placeId) {
       const detailsResponse = await fetch(
         `https://maps.googleapis.com/maps/api/place/details/json?fields=name,formatted_address,opening_hours,delivery,current_opening_hours,formatted_phone_number,photos,website,rating&place_id=${placeId}&key=${token}`
       );
       return detailsResponse.json();
     }));
-    console.log('---> Query Results #5 for Places Details', detailsData)
+    console.log('---> Query Results #3 for more details', detailsData)
+  
     res.json(data.results);
   } catch (error) {
     res.status(500).json({ message: 'Failed to fetch bakeries' });
@@ -126,8 +121,12 @@ async function searchBakeries(req, res) {
 
 
 
-// ? Notes -----
+// ? Notes and References -----
+// from Shopping Cart Lesson 1
+// function findOneAndUpdate(filter, update, options) {}
+// https://mongoosejs.com/docs/tutorials/findoneandupdate.html
 
+// ? Graveyard -----
 // Query for the photo reference
     // const photosReferences = data.results.map(function(result) {
     //   console.log(result.photos[0].photo_reference)
@@ -142,9 +141,3 @@ async function searchBakeries(req, res) {
     //   return photosResponse.json();
     // }));
     // console.log('---> Query Results #3 for Photo Images', PhotosData)
-
-
-
-// from Shopping Cart Lesson 1
-// function findOneAndUpdate(filter, update, options) {}
-// https://mongoosejs.com/docs/tutorials/findoneandupdate.html

@@ -1,6 +1,5 @@
 import sendRequest from "./send-request";
 const BASE_URL = '/api/reviews';
-
 // const CHECKTOKEN_URL = '/api/users/check-token';
 
 // ? sendRequest can take 3 parameters...
@@ -13,5 +12,5 @@ export function create(bakeryId, newReview) {
 
 // * D
 export function deleteReview(bakeryId, reviewId) {
-  return sendRequest(`${BASE_URL}/${bakeryId}/reviews/${reviewId}`, 'DELETE');
+  return sendRequest(`${BASE_URL}/${bakeryId}/${reviewId}`, 'DELETE');
 }

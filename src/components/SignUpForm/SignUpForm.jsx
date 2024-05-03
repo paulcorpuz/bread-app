@@ -80,6 +80,8 @@ export default class SignUpForm extends Component {
           </form>
         </div>
         <p className="error-message">&nbsp;{this.state.error}</p>
+
+
       </main>
     );
   }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as BakeriesApi from '../../utilities/bakeries-api';
 
-import BakeriesList from "../../components/BakeriesGrid/BakeriesGrid";
+import BakeriesGrid from "../../components/BakeriesGrid/BakeriesGrid";
 
 
 export default function BakeriesListPage() {
@@ -26,11 +26,13 @@ export default function BakeriesListPage() {
       {
         bakeries.length !== 0 ? 
         <div>
-          <BakeriesList bakeries={bakeries} setBakeries={setBakeries} />
+          <BakeriesGrid bakeries={bakeries} setBakeries={setBakeries} />
         </div>
         :
-        <h2>no Bakeries added yet!</h2>
+        <h2>no bakeries added yet!</h2>
       }
+
+
     </main>
   );
 }

@@ -21,6 +21,7 @@ async function create(req, res) {
   }
 }
 
+
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw
 // https://www.npmjs.com/package/bcrypt#with-promises
 async function login(req, res) {
@@ -37,11 +38,13 @@ async function login(req, res) {
   }
 }
 
+
 function checkToken(req, res) {
   // req.user will always be there for you when a token is sent
   console.log('req.user', req.user);
   res.json(req.exp);
 }
+
 
 async function edit(req, res) {
   try {
@@ -64,6 +67,7 @@ async function edit(req, res) {
   }
 }
 
+
 /*--- Helper Functions --*/
 function createJWT(user) {
   return jwt.sign(
@@ -75,5 +79,8 @@ function createJWT(user) {
 }
 
 
+
+
+// ? Notes and References -----
 // https://medium.com/@findingalberta/what-the-fffff-findbyidandupdate-mongoose-107219d5f90
 // It really is that simple. Call .findByIdAndUpdate( id, req.body, {new: true}, (err, data) => {…}) and you’re aces!

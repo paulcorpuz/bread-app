@@ -15,6 +15,7 @@ async function create(req, res) {
       rating: req.body.rating,
       user: req.user._id,
       userName: req.user.name,
+      profilePic: req.user.profilePic,
     };
     const bakery = await Bakery.findById(bakeryId);
     bakery.reviews.push(newReview);
@@ -25,6 +26,7 @@ async function create(req, res) {
     res.status(400).json(err);
   }
 }
+
 
 // * D
 async function deleteReview(req, res) {

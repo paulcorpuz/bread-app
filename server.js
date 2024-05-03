@@ -6,7 +6,6 @@ const logger = require('morgan');
 require('dotenv').config(); // Always require and configure near the top
 require('./config/database'); // connect to the database AFTER the config vars are processed
 
-
 const app = express();
 
 app.use(logger('dev'));
@@ -29,8 +28,6 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/notes', require('./routes/api/notes'));
 app.use('/api/bakeries', require('./routes/api/bakeries'));
 app.use('/api/reviews', require('./routes/api/reviews'));
-
-
 
 
 // The following "catch all" route (note the *) is necessary

@@ -3,6 +3,8 @@ const BASE_URL = '/api/users';
 const LOGIN_URL = '/api/users/login';
 const CHECKTOKEN_URL = '/api/users/check-token';
 
+// ? sendRequest can take 3 parameters...
+// ? return sendRequest(<url>, method = '<GET?>', payload = <?>) 
 
 export async function signUp(userData) {
   return sendRequest(BASE_URL, 'POST', userData)
@@ -15,9 +17,6 @@ export async function login(credentials) {
 export function checkToken() {
   return sendRequest(CHECKTOKEN_URL);
 }
-
-// ? sendRequest can take 3 parameters...
-// ? return sendRequest(<url>, method = '<GET?>', payload = <?>) 
 
 // * U
 export function edit(id, editProfile) {

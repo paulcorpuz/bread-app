@@ -1,4 +1,6 @@
 
+
+
 // --> takes prop from App Page ()
 export default function AboutPage() {
 

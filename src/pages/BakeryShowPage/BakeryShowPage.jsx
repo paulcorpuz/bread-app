@@ -1,39 +1,35 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { getUser } from "../../utilities/users-service";
 import * as bakeriesApi from "../../utilities/bakeries-api";
 
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
 import ReviewCard from "../../components/ReviewCard/ReviewCard";
 
 export default function BakeryShowPage() {
-  const [bakery, setBakery] = useState(null);
-  const { id } = useParams();
-  const [reviews, setReviews] = useState([]);
+  const [bakery, setBakery] = useState(null)
+  const { id } = useParams()
+  const [reviews, setReviews] = useState([])
+  const user = getUser()
 
+  
+  //getting Bakery info
+  async function fetchBakery() {
+    try {
+      const bakeryData = await bakeriesApi.show(id);
+      setBakery(bakeryData);
+      setReviews(bakeryData.reviews);
+      console.log(bakeryData.reviews)
+    } catch (error) {
+      console.error("Failed to fetch bakery details", error);
+    }
+  }
 
   //getting Bakery info
-  useEffect(function() {
-    async function fetchBakery() {
-      try {
-        const bakeryData = await bakeriesApi.show(id);
-        setBakery(bakeryData);
-        setReviews(bakeryData.reviews);
-      } catch (error) {
-        console.error("Failed to fetch bakery details", error);
-      }
-    }
+  useEffect(function () {
     fetchBakery();
-  }, [id]);  
+  }, [id]);
 
-  
-  function handleReviewCreated(newReview) {
-    setReviews([...reviews, newReview]);
-  }
-
-  function handleReviewDeleted(reviewId) {
-    setReviews(reviews.filter((review) => review._id !== reviewId));
-  }
-  
 
   return (
     <main>
@@ -42,23 +38,28 @@ export default function BakeryShowPage() {
           <h1>{bakery.name}</h1>
           <h2>Address: {bakery.address}</h2>
           <h2>Rating: {bakery.rating}</h2>
-          <hr />
-
-          <ReviewForm bakeryId={bakery._id} onReviewCreated={handleReviewCreated} />
-          <hr />
-
+          {user && (
+            <>
+              <hr />
+              <ReviewForm user={user} bakeryId={bakery._id} fetchBakery={fetchBakery} />
+              <hr />
+            </>
+          )}
           {reviews.map((review) => (
             <ReviewCard
               key={review._id}
-              review={review}
               bakeryId={bakery._id}
-              onReviewDeleted={handleReviewDeleted}
+              review={review}
+              user={user}
+              fetchBakery={fetchBakery}
             />
           ))}
         </>
       ) : (
-        <p>Loading...</p>
+        <p>Loading!</p>
       )}
+
+
     </main>
   );
 }

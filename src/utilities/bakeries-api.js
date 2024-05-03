@@ -1,7 +1,6 @@
 import sendRequest from "./send-request";
 const BASE_URL = '/api/bakeries';
 // const CHECKTOKEN_URL = '/api/users/check-token';
-// const token = process.env.REACT_APP_GOOGLE_PLACES_KEY;
 
 // ? sendRequest can take 3 parameters...
 // ? return sendRequest(<url>, method = '<GET?>', payload = <?>) 
@@ -15,10 +14,6 @@ export function create(bakery) {
 export function index() {
   return sendRequest(BASE_URL);
 }
-export function show(id) {
-  return sendRequest(`${BASE_URL}/${id}`);
-}
-
 
 // * U
 export function edit(id, editBakery) {
@@ -30,16 +25,19 @@ export function deleteBakery(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
 
-
-// * Search export from Backend
+// * Google Places Search export
 export function searchBakeries(searchQuery, location, radius) {
   const url = `${BASE_URL}/search?query=${searchQuery}&location=${location}&radius=${radius}`;
   return sendRequest(url);
 }
 
+// * R
+export function show(id) {
+  return sendRequest(`${BASE_URL}/${id}`);
+}
 
 
 
 
-
+// ? Notes and References -----
 // https://hub.generalassemb.ly/learn/course/full-stack-development-21-parent-us-online-12-feb-2024-08-may-2024-201900/consuming-apis/apis?client=courses&page=2

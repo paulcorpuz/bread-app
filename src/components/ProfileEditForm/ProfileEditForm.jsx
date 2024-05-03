@@ -3,6 +3,7 @@ import * as usersApi from "../../utilities/users-api";
 
 import './ProfileEditForm.css';
 
+
 export default function ProfileEditForm({ user, setUser }) {
   const [editProfile, setEditProfile] = useState({
     name: user.name,
@@ -13,7 +14,7 @@ export default function ProfileEditForm({ user, setUser }) {
   const [error, setError] = useState('');
 
 
-  // Edit Profile
+  // Edit Profile "handle input"
   function handleChangeEdit(evt) {
     const updatedProfileData = {...editProfile, [evt.target.name]: evt.target.value};
 
@@ -21,6 +22,8 @@ export default function ProfileEditForm({ user, setUser }) {
     setError('');
   }
 
+
+  // "save updates" form
   async function handleSubmitEdit(evt) {
     evt.preventDefault();
     try {
@@ -30,6 +33,7 @@ export default function ProfileEditForm({ user, setUser }) {
       setError('Failed to update profile. Please try again.');
     }
   }
+
 
   return (
     <main className="ProfileEditForm">
@@ -69,6 +73,8 @@ export default function ProfileEditForm({ user, setUser }) {
         <button type="submit">Save Changes</button>
         <p>{error}</p>
       </form>
+
+
     </main>
   );
 }

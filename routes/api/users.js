@@ -18,7 +18,6 @@ router.post('/login', usersCtrl.login);
 // GET /api/users/check-token
 router.get('/check-token', usersCtrl.checkToken);
 
-
 // * U
 // PUT /api/users/:id
 router.put('/:id', ensureLoggedIn, usersCtrl.edit);

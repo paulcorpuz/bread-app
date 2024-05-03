@@ -24,4 +24,6 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
 }
 
 
+
+// ? Notes and References -----
 //https://www.geeksforgeeks.org/difference-between-throw-errormsg-and-throw-new-errormsg/

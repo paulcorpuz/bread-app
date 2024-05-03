@@ -8,15 +8,18 @@ export default function NavBar({ user, setUser }) {
     userService.signUp();
   }
 
+
   function handleLogin() {
     userService.login();
   }
+
 
   function handleLogOut() {
     userService.logOut();
     setUser(null);
   }
 
+  
   return (
     <nav> 
       {/* //logged in/out users */}
@@ -51,6 +54,8 @@ export default function NavBar({ user, setUser }) {
 
       )}
     </nav>
+
+
   );
 }
 

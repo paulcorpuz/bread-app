@@ -8,7 +8,7 @@ const reviewSchema = new Schema({
     type: Number, 
     min: 1, 
     max: 5, 
-    required: true 
+    default: 5
   },
   user: {
     type: Schema.Types.ObjectId,
@@ -23,9 +23,8 @@ const reviewSchema = new Schema({
 const bakerySchema = new Schema({
   name: { type: String },
   address: { type: String },
-  // phoneNumber: { type: String },
-  // website: { type: String },
-  // imageUrl: {type: String },
+  phoneNumber: { type: String },
+  website: { type: String },
   rating: {
     type: Number,
     default: 0
@@ -40,5 +39,6 @@ const bakerySchema = new Schema({
 }, {
     timestamps: true
 });
+
 
 module.exports = mongoose.model('Bakery', bakerySchema);

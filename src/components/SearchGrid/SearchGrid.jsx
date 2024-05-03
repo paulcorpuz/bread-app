@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { searchBakeries } from '../../utilities/bakeries-api';
+
 import SearchCard from '../SearchCard/SearchCard';
+
 
 export default function SearchGrid() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
+  //search function searchQuery is set by USER, location and radius are ALWAYS set to Seattle, WA / 50000 m
   const handleSearch = async function() {
     try {
       const location = 'Seattle, WA';
@@ -17,22 +20,25 @@ export default function SearchGrid() {
     }
   };
 
+
   return (
     <main>
       <input
         type="text"
         value={searchQuery}
         onChange={(evt) => setSearchQuery(evt.target.value)}
-        placeholder="Search bakeries"
+        placeholder="Search for a Seattle Bakery"
       />
       <button onClick={handleSearch}>Search</button>
 
-      {/* style? */}
+      {/* style this */}
       <div>
         {searchResults.map((bakery) => (
           <SearchCard key={bakery.place_id} bakery={bakery} />
         ))}
       </div>
+
+
     </main>
   );
 }

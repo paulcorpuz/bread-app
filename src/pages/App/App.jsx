@@ -49,7 +49,9 @@ export default function App() {
 }
 
 
-/* === Notes === */
+
+
+// ? Notes & References
 // export default function App
   // useState hook = The initial value of user is obtained by getUser() fnc in user-service
 
@@ -62,10 +64,8 @@ export default function App() {
           // show auth page
 
 
-
-/* === References === */
-// ! useState hook
-// * const [stateVariable, setStateVariable] = useState(initialValue);
+// * useState hook
+// const [stateVariable, setStateVariable] = useState(initialValue);
   /* stateVariable: variable that holds current state value.
   setStateVariable: This is the FUNCTION used to update the state. when you call with a new value, React will re-render the component with the updated state.
   initialValue: This is the initial value of the state variable.

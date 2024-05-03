@@ -1,6 +1,6 @@
-import Profile from "../../components/Profile/Profile";
 import './ProfilePage.css';
 
+import Profile from "../../components/Profile/Profile";
 
 
 // --> takes prop from App Page ()
