@@ -118,7 +118,7 @@ export default class SignUpForm extends Component {
       </Box>
 
       <br />
-      <Text>already on pan de replay? <ChakraLink as={RouterLink} to={`/login`}><strong>log in</strong></ChakraLink></Text>
+      <Text>already on pan de city? <ChakraLink as={RouterLink} to={`/login`}><strong>log in</strong></ChakraLink></Text>
 
       </>
     );

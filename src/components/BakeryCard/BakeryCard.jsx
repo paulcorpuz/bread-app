@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   Card,
@@ -11,7 +11,6 @@ import {
   Text,
   HStack,
   Spacer,
-  Link as ChakraLink,
 }
   from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
@@ -58,7 +57,7 @@ export default function BakeryCard({ bakery }) {
         </CardBody>
 
         <CardFooter>
-          <Button as={RouterLink} to={`/bakeries/${bakery._id}`} colorScheme="yellow" rounded={'full'} px={6}>details</Button>
+          <Button as={Link} to={`/bakeries/${bakery._id}`} colorScheme="yellow" rounded={'full'} px={6}>details</Button>
         </CardFooter>
       </Stack>
     </Card>

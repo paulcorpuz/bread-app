@@ -27,7 +27,6 @@ export default function BakeryShowPage({ user }) {
   const { id } = useParams()
   const [reviews, setReviews] = useState([])
 
-
   //getting Bakery info
   async function fetchBakery() {
     try {
@@ -39,13 +38,6 @@ export default function BakeryShowPage({ user }) {
       console.error("Failed to fetch bakery details", error);
     }
   }
-
-  // function getBakeryImage() {
-  //   if (bakery && bakery.photos[0].photo_reference) {
-  //     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${bakery.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_PLACES_KEY}`;
-  //   }
-  //   return "https://i.imgur.com/on1iU8m.png";
-  // }
 
   //getting Bakery info
   useEffect(function () {
@@ -64,7 +56,7 @@ export default function BakeryShowPage({ user }) {
         <Box>
           <Flex direction={['column', 'row']} align="center" justify="center">
             {/* Bakery Image */}
-            <Image src="https://i.imgur.com/on1iU8m.png" alt='Bakery Pic' boxSize='40%' />
+            <Image src={bakery.photoURL} alt='Bakery Pic' boxSize='40%' />
 
             {/* Bakery Info */}
             <Box p={0} m={0}>

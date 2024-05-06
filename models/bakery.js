@@ -44,6 +44,7 @@ const bakerySchema = new Schema({
     ref: 'User',
   },
   userName:{ type: String },
+  photoURL:{ type: String },
 }, {
     timestamps: true
 });

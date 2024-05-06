@@ -3,7 +3,6 @@ import { searchBakeries } from '../../utilities/bakeries-api';
 
 import SearchCard from '../SearchCard/SearchCard';
 
-
 import {
   FormControl,
   FormLabel,
@@ -13,14 +12,14 @@ import {
 } from '@chakra-ui/react'
 
 
-export default function SearchForm() {
+export default function SearchFormSFO() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
   //search function searchQuery is set by USER, location and radius are ALWAYS set to Seattle, WA / 50000 m
   const handleSearch = async function () {
     try {
-      const location = 'Seattle, WA';
+      const location = 'San Francisco, CA';
       const radius = 50000; // radius in meters
       const results = await searchBakeries(searchQuery, location, radius);
       console.log("look", results)
@@ -41,7 +40,7 @@ export default function SearchForm() {
       p={4}
     >
       <FormControl isRequired mb='10px'>
-        <FormLabel>search Seattle bakeries</FormLabel>
+        <FormLabel>find your next pita pal</FormLabel>
         <Input
           type="text"
           value={searchQuery}

@@ -11,7 +11,10 @@ import NotesPage from '../NotesPage/NotesPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LoginPage from '../LoginPage/LoginPage';
-import SearchPage from '../SearchPage/SearchPage';
+import SearchPageSEA from '../SearchPage/SearchPageSEA';
+import SearchPageNYC from '../SearchPage/SearchPageNYC';
+import SearchPageSFO from '../SearchPage/SearchPageSFO';
+
 import BakeryShowPage from '../BakeryShowPage/BakeryShowPage';
 import RootLayOut from '../../RootLayOut/RootLayOut';
 
@@ -27,7 +30,7 @@ export default function App() {
       <Routes>
         {/* Logged-in and Logged-out user routes */}
         {/* <Route path='/' element={<RootLayOut user={user} setUser={setUser}/>} /> */}
-        <Route path='/' element={<HomePage user={user} setUser={setUser}/>} />
+        <Route path='/' element={<HomePage user={user} setUser={setUser} />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/bakeries' element={<BakeriesListPage />} />
         <Route path="/bakeries/:id" element={<BakeryShowPage user={user} setUser={setUser} />} />
@@ -35,8 +38,10 @@ export default function App() {
         {user ? (
           <>
             {/* Logged-in user routes */}
-            <Route path='/search' element={< SearchPage/>} />
-            <Route path='/profile' element={< ProfilePage user={user} setUser={setUser}/>} />
+            <Route path='/searchSEA' element={< SearchPageSEA />} />
+            <Route path='/searchNYC' element={< SearchPageNYC />} />
+            <Route path='/searchSFO' element={< SearchPageSFO />} />
+            <Route path='/profile' element={< ProfilePage user={user} setUser={setUser} />} />
           </>
         ) : (
           <>
@@ -56,31 +61,31 @@ export default function App() {
 
 // ? Notes & References
 // export default function App
-  // useState hook = The initial value of user is obtained by getUser() fnc in user-service
+// useState hook = The initial value of user is obtained by getUser() fnc in user-service
 
-  // return statement
-    //  main element 
-        // if user: 
-          // show NavBar, 
-          // put routes here 
-        // if no use:
-          // show auth page
+// return statement
+//  main element
+// if user:
+// show NavBar,
+// put routes here
+// if no use:
+// show auth page
 
 
 // * useState hook
 // const [stateVariable, setStateVariable] = useState(initialValue);
-  /* stateVariable: variable that holds current state value.
-  setStateVariable: This is the FUNCTION used to update the state. when you call with a new value, React will re-render the component with the updated state.
-  initialValue: This is the initial value of the state variable.
+/* stateVariable: variable that holds current state value.
+setStateVariable: This is the FUNCTION used to update the state. when you call with a new value, React will re-render the component with the updated state.
+initialValue: This is the initial value of the state variable.
 
-  setStateVariable
-    Updating State --> setStateVariable(newValue);
-    functional update --> setStateVariable(prevState => prevState + 1);
-    using obect or array state -->
-      * Object
-      const [user, setUser] = useState({ name: '', age: 0 });
-      setUser({ ...user, name: 'John' });
-      * Array
-      const [todos, setTodos] = useState([]);
-      setTodos([...todos, newTodo]);
+setStateVariable
+  Updating State --> setStateVariable(newValue);
+  functional update --> setStateVariable(prevState => prevState + 1);
+  using obect or array state -->
+    * Object
+    const [user, setUser] = useState({ name: '', age: 0 });
+    setUser({ ...user, name: 'John' });
+    * Array
+    const [todos, setTodos] = useState([]);
+    setTodos([...todos, newTodo]);
 */

@@ -47,7 +47,7 @@ export default function HomePage() {
         </Heading>
 
         <Text maxW={'3xl'}>
-          satisfy your cravings and support local businesses. PAN DE REPLAY is your go-to source for finding the the best bakeries in town.
+          satisfy your cravings and support local businesses. pan de city is your go-to source for finding the the best bakeries in town.
           Share your experiences, and help others find their slice, tart, or loaf of happiness.
         </Text>
         <Stack spacing={6} direction={'row'}>

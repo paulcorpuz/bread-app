@@ -102,7 +102,7 @@ export default function LoginForm({ setUser }) {
       </Box>
 
       <br />
-      <Text>new to pan de replay? <ChakraLink as={RouterLink} to={`/signup`}><strong>sign up</strong></ChakraLink></Text>
+      <Text>new to pan de city? <ChakraLink as={RouterLink} to={`/signup`}><strong>sign up</strong></ChakraLink></Text>
 
     </>
   );

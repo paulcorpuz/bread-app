@@ -29,7 +29,7 @@ export default function AboutPage() {
         <Text color={'gray.500'}>
 
 
-          pan de replay was developed by Paul Corpuz, developed using Mongo DB, Express, React, and Node
+          pan de city was developed by Paul Corpuz, developed using Mongo DB, Express, React, and Node
           featuring:
           <UnorderedList listStyleType="none">
             <ListItem><strong>CRUD Operations</strong> for managing bakery listings profile, and user reviews.</ListItem>

@@ -37,6 +37,7 @@ async function create(req, res) {
 
       userId: req.user._id,
       userName: req.user.name,
+      photoURL: 'https://i.imgur.com/bR1vf6R.png',
     };
     
     const bakery = new Bakery(bakeryData);
