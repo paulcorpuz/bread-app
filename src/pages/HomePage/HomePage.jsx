@@ -11,6 +11,8 @@ import {
 } from '@chakra-ui/react';
 
 export default function HomePage() {
+
+
   return (
     <Container maxW={'5xl'}>
       <Stack

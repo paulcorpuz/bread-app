@@ -24,11 +24,11 @@ import {
 import { Icon } from '@chakra-ui/react'
 import { PiStarFill , PiCurrencyCircleDollarBold, PiPhoneFill, PiLinkSimpleBold, PiMapTrifoldBold, PiCalendarDotsBold } from 'react-icons/pi'
 
-export default function BakeryShowPage() {
+export default function BakeryShowPage({ user }) {
   const [bakery, setBakery] = useState(null)
   const { id } = useParams()
   const [reviews, setReviews] = useState([])
-  const user = getUser()
+  // const user = getUser()
 
 
   //getting Bakery info
@@ -125,9 +125,11 @@ export default function BakeryShowPage() {
           <br />
 
           {/* if the user is logged in */}
-          {user && (
+          {user ? (
               <ReviewForm user={user} bakeryId={bakery._id} fetchBakery={fetchBakery} />
-          )}
+            ) : (
+              <Text>Please log in to leave a review.</Text>
+            )}
           <br />
 
           {/* Review Info */}

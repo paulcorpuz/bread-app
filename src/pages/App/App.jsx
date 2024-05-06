@@ -30,7 +30,7 @@ export default function App() {
         <Route path='/' element={<HomePage user={user} setUser={setUser}/>} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/bakeries' element={<BakeriesListPage />} />
-        <Route path="/bakeries/:id" element={<BakeryShowPage />} />
+        <Route path="/bakeries/:id" element={<BakeryShowPage user={user} setUser={setUser} />} />
         <Route path='/notes' element={<NotesPage />} />
         {user ? (
           <>
