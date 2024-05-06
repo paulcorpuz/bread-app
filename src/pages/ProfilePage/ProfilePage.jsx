@@ -6,7 +6,7 @@ import Profile from "../../components/Profile/Profile";
 // --> takes prop from App Page ()
 export default function ProfilePage({ user, setUser }) {
   return (
-    <main className='ProfilePage'>
+    <main>
       <h1>Profile Page</h1>
       <Profile user={user} setUser={setUser}/>
     </main>

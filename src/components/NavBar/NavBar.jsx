@@ -85,7 +85,7 @@ export default function NavBar({ user, setUser }) {
         // * Logged-out user
         <HStack spacing='15px'>
           <ChakraLink as={RouterLink} to="/login" onClick={handleLogin} sx={NavStyle}>log in</ChakraLink>
-          <Button as={RouterLink} to="/signup" colorScheme="yellow" onClick={handleSignUp}>sign up</Button>
+          <Button as={RouterLink} to="/signup" onClick={handleSignUp} colorScheme="yellow" rounded={'full'} px={6}>sign up</Button>
         </HStack>
       )}
 

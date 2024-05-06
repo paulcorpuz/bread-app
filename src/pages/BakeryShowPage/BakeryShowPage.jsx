@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getUser } from "../../utilities/users-service";
 import * as bakeriesApi from "../../utilities/bakeries-api";
 
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
@@ -20,7 +19,6 @@ import {
   SimpleGrid,
 
 } from '@chakra-ui/react'
-
 import { Icon } from '@chakra-ui/react'
 import { PiStarFill , PiCurrencyCircleDollarBold, PiPhoneFill, PiLinkSimpleBold, PiMapTrifoldBold, PiCalendarDotsBold } from 'react-icons/pi'
 
@@ -28,7 +26,6 @@ export default function BakeryShowPage({ user }) {
   const [bakery, setBakery] = useState(null)
   const { id } = useParams()
   const [reviews, setReviews] = useState([])
-  // const user = getUser()
 
 
   //getting Bakery info
@@ -42,6 +39,13 @@ export default function BakeryShowPage({ user }) {
       console.error("Failed to fetch bakery details", error);
     }
   }
+
+  // function getBakeryImage() {
+  //   if (bakery && bakery.photos[0].photo_reference) {
+  //     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${bakery.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_PLACES_KEY}`;
+  //   }
+  //   return "https://i.imgur.com/on1iU8m.png";
+  // }
 
   //getting Bakery info
   useEffect(function () {
@@ -133,7 +137,7 @@ export default function BakeryShowPage({ user }) {
           <br />
 
           {/* Review Info */}
-          <SimpleGrid columns={3} spacing={5} minChildWidth='300px'>
+          <SimpleGrid columns={2} spacing={2} minChildWidth='400px'>
             {reviews.map((review) => (
               <ReviewCard key={review._id} bakeryId={bakery._id} review={review} user={user} fetchBakery={fetchBakery} />
             ))}

@@ -56,9 +56,11 @@ export default function ReviewCard({ user, review, bakeryId, fetchBakery }) {
           </Box>
         </Flex>
       </CardHeader>
+      
       <CardBody>
         <Text>{review.content}</Text>
       </CardBody>
+
       <CardFooter>
         {isCurrentUser && (
           <Flex justify="flex-end">

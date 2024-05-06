@@ -3,6 +3,14 @@ import * as BakeriesApi from '../../utilities/bakeries-api';
 
 import BakeriesGrid from "../../components/BakeriesGrid/BakeriesGrid";
 
+import {
+  Flex,
+  Heading,
+  Stack,
+  Image,
+  Text,
+  Link as ChakraLink,
+} from '@chakra-ui/react';
 
 export default function BakeriesListPage() {
   const [bakeries, setBakeries] = useState([]);
@@ -22,7 +30,12 @@ export default function BakeriesListPage() {
 
   return (
     <main>
-      <h1>This is the BakeryListPage </h1>
+        <br />
+        <Heading fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight={'110%'}>
+          curated by the community
+        </Heading>
+        <br />
+
       {
         bakeries.length !== 0 ? 
         <div>

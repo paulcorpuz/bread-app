@@ -27,6 +27,8 @@ export default function AboutPage() {
         </Heading>
 
         <Text color={'gray.500'}>
+
+
           pan de replay was developed by Paul Corpuz, developed using Mongo DB, Express, React, and Node
           featuring:
           <UnorderedList listStyleType="none">

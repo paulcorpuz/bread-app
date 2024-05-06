@@ -6,7 +6,7 @@ export default function Profile({ user, setUser}) {
 
 
   return (
-    <main className='Profile'>
+    <main>
       <h1>Profile Component</h1>
       <img src={user.profilePic} alt="Profile Pic" width="20%" height="auto"/>
       <h2>{user.name}</h2>

@@ -1,6 +1,7 @@
-import { Card, CardBody, CardFooter, Button, Image, Stack, Heading, Text} from '@chakra-ui/react'
 import { useState } from "react";
 import * as bakeriesAPI from "../../utilities/bakeries-api";
+
+import { Card, CardBody, CardFooter, Button, Image, Stack, Heading, Text} from '@chakra-ui/react'
 
 
 export default function SearchCard({ bakery }) {
@@ -33,7 +34,6 @@ export default function SearchCard({ bakery }) {
           maxW={{ base: '100%', sm: '200px' }}
           src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${bakery.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_PLACES_KEY}`}
           alt={bakery.name}
-          className="Bakery Photo"
         />
       )}
       
