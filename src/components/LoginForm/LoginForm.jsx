@@ -1,5 +1,20 @@
 import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import * as usersService from '../../utilities/users-service';
+
+import {
+  FormControl,
+  FormLabel,
+  Button,
+  Box,
+  Flex,
+  Input,
+  Link as ChakraLink,
+  Text,
+  Stack,
+  Checkbox,
+  Link,
+} from '@chakra-ui/react'
 
 
 // --> takes prop from App Page (setUser)
@@ -31,34 +46,64 @@ export default function LoginForm({ setUser }) {
 
 
   return (
-    <main>
-      <h1>Login Component</h1>
-      <div className="form-container">
+    <>
+      <Box
+        // border={'3px solid black'}  
+        rounded={'xl'}
+        boxShadow={'xl'}
+        bg='gray.300'
+        p={4}
+      >
         <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input 
-            type="text" 
-            name="email" 
-            value={credentials.email} 
-            onChange={handleChange} 
-            required 
-          />
+          <FormControl isRequired mb='10px'>
+            <FormLabel>email</FormLabel>
+            <Input
+              type="text"
+              name="email"
+              value={credentials.email}
+              onChange={handleChange}
+              required
+              bg="white"
+            />
+          </FormControl>
 
-          <label>Password</label>
-          <input 
-            type="password" 
-            name="password" 
-            value={credentials.password} 
-            onChange={handleChange} 
-            required 
-          />
+          <FormControl isRequired mb='10px'>
+            <FormLabel>password</FormLabel>
+            <Input
+              type="password"
+              name="password"
+              value={credentials.password}
+              onChange={handleChange}
+              required
+              bg="white"
+            />
+          </FormControl>
 
-          <button type="submit">Log In</button>
+          <Stack spacing={6} mb='10px'>
+            <Stack
+              direction={{ base: 'column', sm: 'row' }}
+              align={'start'}
+              justify={'space-between'}>
+              <Checkbox colorScheme='yellow'>remember me</Checkbox>
+              <Link color={'blue.500'}>forgot password?</Link>
+            </Stack>
+          </Stack>
+
+
+
+
+          <Flex justify="flex-end">
+            <Button type="submit" colorScheme="yellow" rounded={'full'} px={6}>
+              log in
+            </Button>
+          </Flex>
         </form>
-      </div>
-      <p className="error-message">&nbsp;{error}</p>
+        {error && <p>{error}</p>}
+      </Box>
 
+      <br />
+      <Text>new to pan de replay? <ChakraLink as={RouterLink} to={`/signup`}><strong>sign up</strong></ChakraLink></Text>
 
-    </main>
+    </>
   );
 }

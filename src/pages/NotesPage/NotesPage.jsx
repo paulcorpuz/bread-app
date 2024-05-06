@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as notesAPI from '../../utilities/notes-api';
 
-import './NotesPage.css';
+// import './NotesPage.css';
 
 import NoteAddForm from "../../components/NoteAddForm/NoteAddForm";
 import NotesList from "../../components/NotesList/NotesList";

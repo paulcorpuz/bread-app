@@ -5,6 +5,24 @@ import * as bakeriesApi from "../../utilities/bakeries-api";
 
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
 import ReviewCard from "../../components/ReviewCard/ReviewCard";
+// import LocationCard from "../../components/LocationCard/LocationCard";
+
+import {
+  Image,
+  Link,
+  Box,
+  Text,
+  Heading,
+  HStack,
+  VStack,
+  Flex,
+  Spacer,
+  SimpleGrid,
+
+} from '@chakra-ui/react'
+
+import { Icon } from '@chakra-ui/react'
+import { PiStarFill , PiCurrencyCircleDollarBold, PiPhoneFill, PiLinkSimpleBold, PiMapTrifoldBold, PiCalendarDotsBold } from 'react-icons/pi'
 
 export default function BakeryShowPage() {
   const [bakery, setBakery] = useState(null)
@@ -12,7 +30,7 @@ export default function BakeryShowPage() {
   const [reviews, setReviews] = useState([])
   const user = getUser()
 
-  
+
   //getting Bakery info
   async function fetchBakery() {
     try {
@@ -31,35 +49,98 @@ export default function BakeryShowPage() {
   }, [id]);
 
 
+  const textStyles = {
+    fontSize: 'lg',
+  }
+
+
   return (
     <main>
       {bakery ? (
-        <>
-          <h1>{bakery.name}</h1>
-          <h2>Address: {bakery.address}</h2>
-          <h2>Rating: {bakery.rating}</h2>
+        <Box>
+          <Flex direction={['column', 'row']} align="center" justify="center">
+            {/* Bakery Image */}
+            <Image src="https://i.imgur.com/on1iU8m.png" alt='Bakery Pic' boxSize='40%' />
+
+            {/* Bakery Info */}
+            <Box p={0} m={0}>
+              <VStack>
+                <Heading size='2xl'>{bakery.name}</Heading>
+                <Flex>
+                  <HStack>
+                    <Icon as={PiStarFill } boxSize={6} />
+                    <Text fontSize='md'>{bakery.googRating}</Text>
+                    <Text fontSize='md'>({bakery.googUserRatingTotal} reviews)</Text>
+                    <Spacer />
+                    <Icon as={PiCurrencyCircleDollarBold } boxSize={6} />
+                    <Text fontSize='md'>{bakery.priceLevel}</Text>
+                    <Spacer />
+                    <Text fontSize='md'><strong>Takeout:</strong> {bakery.takeOut ? 'Yes' : 'No'}</Text>
+                    <Spacer />
+                    <Text fontSize='md'><strong>Dine-in:</strong> {bakery.dineIn ? 'Yes' : 'No'}</Text>
+                  </HStack>
+                </Flex>
+                <Text sx={textStyles}>{bakery.editorialSummary.overview}</Text>
+              </VStack>
+            </Box>
+          </Flex>
+
+          {/* Location */}
+          <Box p={0} m={0}>
+            <VStack>
+              <Heading size='lg'>Location and Hours</Heading>
+              <Flex>
+                  <HStack>
+                  <Icon as={PiMapTrifoldBold } boxSize={6} />
+                  <Text sx={textStyles}>{bakery.address ? bakery.address : 'Unavailable'}</Text>
+                  </HStack>
+              </Flex>
+              <Flex>
+                  <HStack>
+                  <Icon as={PiLinkSimpleBold } boxSize={6} />
+                  <Text sx={textStyles}><Link href={bakery.website} isExternal> {bakery.website} </Link></Text>
+                  </HStack>
+              </Flex>
+              <Flex>
+                  <HStack>
+                  <Icon as={PiPhoneFill } boxSize={6} />
+                  <Text sx={textStyles}>{bakery.phoneNumber ? bakery.phoneNumber : 'Unavailable'}</Text>
+                  </HStack>
+              </Flex>
+              {bakery.openingHours && (
+                <div>
+                  <Flex>
+                    <HStack>
+                      <Icon as={PiCalendarDotsBold} boxSize={6} />
+                      <Heading size='md'>Opening Hours:</Heading>
+                    </HStack>
+                  </Flex>
+                  {bakery.openingHours.weekday_text.map((day, index) => (
+                    <p key={index}>{day}</p>
+                  ))}
+                </div>
+              )}
+            </VStack>
+          </Box>
+          <br />
+
+          {/* if the user is logged in */}
           {user && (
-            <>
-              <hr />
               <ReviewForm user={user} bakeryId={bakery._id} fetchBakery={fetchBakery} />
-              <hr />
-            </>
           )}
-          {reviews.map((review) => (
-            <ReviewCard
-              key={review._id}
-              bakeryId={bakery._id}
-              review={review}
-              user={user}
-              fetchBakery={fetchBakery}
-            />
-          ))}
-        </>
+          <br />
+
+          {/* Review Info */}
+          <SimpleGrid columns={3} spacing={5} minChildWidth='300px'>
+            {reviews.map((review) => (
+              <ReviewCard key={review._id} bakeryId={bakery._id} review={review} user={user} fetchBakery={fetchBakery} />
+            ))}
+          </SimpleGrid>
+
+        </Box>
       ) : (
-        <p>Loading!</p>
+        <Text sx={textStyles}>Loading!!</Text>
       )}
-
-
     </main>
   );
 }
@@ -72,7 +153,7 @@ export default function BakeryShowPage() {
 
 
 
-
+// https://www.guvi.in/blog/how-to-render-an-array-of-objects-in-react/
 
 
 // https://reactrouter.com/en/main/hooks/use-params

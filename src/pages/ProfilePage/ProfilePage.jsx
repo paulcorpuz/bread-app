@@ -1,4 +1,4 @@
-import './ProfilePage.css';
+// import './ProfilePage.css';
 
 import Profile from "../../components/Profile/Profile";
 

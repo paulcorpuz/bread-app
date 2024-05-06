@@ -1,7 +1,5 @@
 import Note from "../Note/Note";
 
-import './NotesList.css';
-
 
 // --> takes prop from NotesPage (notes, setNotes)
 export default function NotesList({ notes, setNotes }) {

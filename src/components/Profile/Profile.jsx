@@ -1,6 +1,5 @@
 import ProfileEditForm from '../ProfileEditForm/ProfileEditForm';
 
-import './Profile.css';
 
 // --> takes prop from ProfilePage (user, setUser)
 export default function Profile({ user, setUser}) {

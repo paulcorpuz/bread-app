@@ -1,10 +1,13 @@
-import SearchGrid from '../../components/SearchGrid/SearchGrid';
+import SearchForm from '../../components/SearchForm/SearchForm';
+
 
 export default function SearchPage() {
   return (
     <div>
-      <h1>Search Bakeries</h1>
-      <SearchGrid />
+      <SearchForm />
+
+
+
     </div>
   );
 };

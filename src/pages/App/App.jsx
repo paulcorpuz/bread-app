@@ -13,6 +13,7 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import LoginPage from '../LoginPage/LoginPage';
 import SearchPage from '../SearchPage/SearchPage';
 import BakeryShowPage from '../BakeryShowPage/BakeryShowPage';
+import RootLayOut from '../../RootLayOut/RootLayOut';
 
 
 export default function App() {
@@ -20,11 +21,13 @@ export default function App() {
 
   return (
     <main className="App">
+      {/* <RootLayOut user={user} setUser={setUser}/> */}
       <NavBar user={user} setUser={setUser} />
 
       <Routes>
         {/* Logged-in and Logged-out user routes */}
-        <Route path='/' element={< HomePage />} />
+        {/* <Route path='/' element={<RootLayOut user={user} setUser={setUser}/>} /> */}
+        <Route path='/' element={<HomePage user={user} setUser={setUser}/>} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/bakeries' element={<BakeriesListPage />} />
         <Route path="/bakeries/:id" element={<BakeryShowPage />} />

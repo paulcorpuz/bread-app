@@ -1,8 +1,6 @@
 import { useState } from "react";
 import * as notesAPI from "../../utilities/notes-api";
 
-import './NoteAddForm.css';
-
 
 // --> takes prop from NotesPage  (sortOrder)
 // --> takes prop from NotesList  (notes, setNotes, sortOrder)

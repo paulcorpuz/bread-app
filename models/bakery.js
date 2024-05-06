@@ -27,12 +27,16 @@ const bakerySchema = new Schema({
   priceLevel: { type: Number },
   googRating: { type: Number },
   googUserRatingTotal: { type: Number },
-  openingHours:{ type: Object },
+  isOpen:{ type: Object },
   businessStatus: { type: String },
   
   phoneNumber: { type: String },
   website: { type: String },
+  openingHours:{ type: Object },
+  editorialSummary: { type: Object },
   delivery: { type: Boolean },
+  takeOut: { type: Boolean },
+  dineIn: { type: Boolean },
 
   reviews: [reviewSchema],
   user: {

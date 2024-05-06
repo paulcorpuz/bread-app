@@ -1,8 +1,27 @@
 import { useState } from "react";
 import * as reviewsAPI from "../../utilities/reviews-api";
 
-export default function ReviewCard({ user, review, bakeryId, fetchBakery}) {
+import {
+  Avatar,
+  Box,
+  Text,
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  Flex,
+  Heading,
+  HStack,
+  Spacer,
+  IconButton,
+} from '@chakra-ui/react'
+import { Icon } from '@chakra-ui/react'
+import { PiStarFill, PiXCircleFill  } from 'react-icons/pi'
+
+
+export default function ReviewCard({ user, review, bakeryId, fetchBakery }) {
   const [error, setError] = useState("");
+  const date = new Date(review.createdAt)
 
   async function handleDeleteReview() {
     try {
@@ -13,18 +32,48 @@ export default function ReviewCard({ user, review, bakeryId, fetchBakery}) {
     }
   }
 
-
   return (
-    <main>
-      <p>{review.content}</p>
-      <p>Rating: {review.rating}</p>
-      {user && (
-        <button onClick={handleDeleteReview}>Delete Review</button>
-      )}
+    <Card borderTop='4px' borderColor='yellow.400' bg='white'>
+      <CardHeader>
+        <Flex gap={5}>
+          <Avatar src={user.profilePic} />
+          <Box>
+            <Heading as='h3' size='sm'>{user.name}</Heading>
+            <Flex>
+              <HStack>
+                <Icon as={PiStarFill } boxSize={4} />
+                <Text> {review.rating}</Text>
+                <Spacer />
+                <Text>({date.toLocaleString([], { month: 'long', day: 'numeric', year: 'numeric', })})</Text>
+              </HStack>
+            </Flex>
+          </Box>
+        </Flex>
+      </CardHeader>
+
+      <CardBody>
+        <Text>{review.content}</Text>
+      </CardBody>
+
+      <CardFooter>
+        {user && (
+          <Flex justify="flex-end">
+            <p>bb</p>
+          < IconButton
+            onClick={handleDeleteReview}
+            // isRound={true}
+            variant='solid'
+            colorScheme='teal'
+            aria-label='Delete Review'
+            fontSize='20px'
+            icon={<PiXCircleFill />}
+          />
+          </Flex>
+        )}
+      </CardFooter>
+
       {error && <p>{error}</p>}
-    </main>
-
-
+    </Card>
   );
 }
 

@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import * as usersApi from "../../utilities/users-api";
 
-import './ProfileEditForm.css';
+import {
+  FormControl,
+  FormLabel,
+  Button,
+  Box,
+  Flex,
+  Input,
+} from '@chakra-ui/react'
 
 
 export default function ProfileEditForm({ user, setUser }) {
@@ -16,7 +23,7 @@ export default function ProfileEditForm({ user, setUser }) {
 
   // Edit Profile "handle input"
   function handleChangeEdit(evt) {
-    const updatedProfileData = {...editProfile, [evt.target.name]: evt.target.value};
+    const updatedProfileData = { ...editProfile, [evt.target.name]: evt.target.value };
 
     setEditProfile(updatedProfileData);
     setError('');
@@ -36,45 +43,63 @@ export default function ProfileEditForm({ user, setUser }) {
 
 
   return (
-    <main className="ProfileEditForm">
-      <h1>ProfileEditForm Component</h1>
+    <Box
+      // border={'3px solid black'}  
+      rounded={'xl'}
+      boxShadow={'xl'}
+      bg='gray.300'
+      p={4}
+    >
       <form onSubmit={handleSubmitEdit}>
-        <label>name</label>
-        <input
-          type="text"
-          name="name"
-          value={editProfile.name}
-          onChange={handleChangeEdit}
-        />
+        <FormControl mb='10px'>
+          <FormLabel>name</FormLabel>
+          <Input
+            type="text"
+            name="name"
+            value={editProfile.name}
+            onChange={handleChangeEdit}
+            bg="white"
+          />
+        </FormControl>
 
-        <label>email</label>
-        <input
-          type="email"
-          name="email"
-          value={editProfile.email}
-          onChange={handleChangeEdit}
-        />
+        <FormControl mb='10px'>
+          <FormLabel>email</FormLabel>
+          <Input
+            type="email"
+            name="email"
+            value={editProfile.email}
+            onChange={handleChangeEdit}
+            bg="white"
+          />
+        </FormControl>
 
-        <label>bio</label>
-        <input
-          name="bio"
-          value={editProfile.bio}
-          onChange={handleChangeEdit}
-        />
+        <FormControl mb='10px'>
+          <FormLabel>bio</FormLabel>
+          <Input
+            type="text"
+            name="bio"
+            value={editProfile.bio}
+            onChange={handleChangeEdit}
+            bg="white"
+          />
+        </FormControl>
 
-        <label>profile pic URL</label>
-        <input
-          type="text"
-          name="profilePic"
-          value={editProfile.profilePic}
-          onChange={handleChangeEdit}
-        />
+        <FormControl mb='10px'>
+          <FormLabel>profile pic url</FormLabel>
+          <Input
+            type="text"
+            name="profilePic"
+            value={editProfile.profilePic}
+            onChange={handleChangeEdit}
+            bg="white"
+          />
+        </FormControl>
 
-        <button type="submit">Save Changes</button>
-        <p>{error}</p>
+        <Flex justify="flex-end">
+            <Button type="submit" colorScheme="yellow" rounded={'full'} px={6} >save changes</Button>
+          </Flex>
       </form>
-
-
-    </main>
+      <p>{error}</p>
+    </Box>
   );
 }

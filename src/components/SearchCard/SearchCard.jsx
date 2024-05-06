@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter, Button, Divider, Image, Stack, Heading, Text} from '@chakra-ui/react'
+import { Card, CardBody, CardFooter, Button, Image, Stack, Heading, Text} from '@chakra-ui/react'
 import { useState } from "react";
 import * as bakeriesAPI from "../../utilities/bakeries-api";
 
@@ -18,8 +18,16 @@ export default function SearchCard({ bakery }) {
 
 
   return (
-    <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
+    <Card 
+      direction={{ base: 'column', sm: 'row' }} 
+      overflow='hidden' 
+      borderTop='4px'
+      borderColor='yellow.400' 
+      bg='white'
+    >
       {bakery.photos && bakery.photos.length > 0 && (
+
+        // bakery photo
         <Image
           objectFit='cover'
           maxW={{ base: '100%', sm: '200px' }}
@@ -28,7 +36,8 @@ export default function SearchCard({ bakery }) {
           className="Bakery Photo"
         />
       )}
-
+      
+      {/* bakery info */}
       <Stack>
         <CardBody>
           <Heading size='md'>{bakery.name}</Heading>
@@ -37,21 +46,20 @@ export default function SearchCard({ bakery }) {
           {bakery.rating && <Text py='2'>Rating: {bakery.rating}</Text>}
           {bakery.formatted_phone_number && <Text py='2'>Phone: {bakery.formatted_phone_number}</Text>}
           {bakery.delivery && <Text py='2'>Delivery: {bakery.delivery}</Text>}
-          {/* TODO: check out basic info, cannot use formatted_phone_number */}
         </CardBody>
 
         {/* <Divider /> */}
+        
         <CardFooter>
-          <Button onClick={handleSubmitBakery} variant='solid' colorScheme='yellow'>
-            Save Bakery
+          <Button onClick={handleSubmitBakery} colorScheme="yellow" rounded={'full'} px={6}>
+            save bakery
           </Button>
         </CardFooter>
+
         {error && <Text py='2'>{error}</Text>}
       </Stack>
-
-
-
-
+    
+    
     </Card>
   );
 }

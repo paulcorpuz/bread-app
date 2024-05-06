@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./BakeryCard.css";
+
 
 export default function BakeryCard({ bakery }) {
   return (

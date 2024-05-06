@@ -1,12 +1,17 @@
-// import {
-//   FormControl,
-//   FormLabel,
-//   FormErrorMessage,
-//   FormHelperText,
-// } from '@chakra-ui/react'
-
 import { Component } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { signUp } from '../../utilities/users-service';
+
+import {
+  FormControl,
+  FormLabel,
+  Button,
+  Box,
+  Flex,
+  Input,
+  Link as ChakraLink,
+  Text,
+} from '@chakra-ui/react'
 
 
 // --> class component
@@ -43,53 +48,80 @@ export default class SignUpForm extends Component {
 
   render() {
     const disable = this.state.password !== this.state.confirm;
+
+
     return (
-      <main>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <form>Name</form>
-            <input 
-              type="text" 
-              name="name" 
-              value={this.state.name} 
-              onChange={this.handleChange} 
-              required 
-            />
-
-            <label>Email</label>
-            <input 
-              type="email" 
-              name="email" 
-              value={this.state.email} 
-              onChange={this.handleChange} 
+      <>
+      <Box
+        // border={'3px solid black'}  
+        rounded={'xl'}
+        boxShadow={'xl'}
+        bg='gray.300'
+        p={4}
+      >
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
+        <FormControl isRequired mb='10px'>
+          <FormLabel>name</FormLabel>
+            <Input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
               required
+              bg="white"
             />
+          </FormControl>
 
-            <label>Password</label>
-            <input 
-              type="password" 
-              name="password" 
-              value={this.state.password} 
-              onChange={this.handleChange} 
-              required 
+          <FormControl isRequired mb='10px'>
+            <FormLabel>email</FormLabel>
+            <Input
+              type="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              required
+              bg="white"
             />
+          </FormControl>
 
-            <label>Confirm</label>
-            <input
+          <FormControl isRequired mb='10px'>
+            <FormLabel>password</FormLabel>
+            <Input
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              required
+              bg="white"
+            />
+          </FormControl>
+
+          <FormControl isRequired mb='10px'>
+            <FormLabel>confirm password</FormLabel>
+            <Input
               type="password"
               name="confirm"
               value={this.state.confirm}
               onChange={this.handleChange}
               required
+              bg="white"
             />
+          </FormControl>
 
-            <button type="submit" disabled={disable}>Sign Up</button>
-          </form>
-        </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
+          <Flex justify="flex-end">
+            <Button type="submit" disabled={disable} colorScheme="yellow" rounded={'full'} px={6}>
+              sign up
+            </Button>
+          </Flex>
+        </form>
+        <p>{this.state.error}</p>
+      </Box>
 
+      <br />
+      <Text>already on pan de replay? <ChakraLink as={RouterLink} to={`/login`}><strong>log in</strong></ChakraLink></Text>
 
-      </main>
+      </>
     );
   }
 }
+
