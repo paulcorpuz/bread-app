@@ -19,10 +19,13 @@ export default function SearchFormNYC() {
   //search function searchQuery is set by USER, location and radius are ALWAYS set to Seattle, WA / 50000 m
   const handleSearch = async function () {
     try {
-      const location = 'New York, NY';
+      // const location = 'New York, NY';
+      const latitude = 40.7128; // Example latitude for New York City
+      const longitude = -74.0060; // Example longitude for New York City
       const radius = 50000; // radius in meters
-      const results = await searchBakeries(searchQuery, location, radius);
-      console.log("look", results)
+      // const results = await searchBakeries(searchQuery, location, radius);
+      const results = await searchBakeries(searchQuery, latitude, longitude, radius);
+      console.log("---> look", results)
       setSearchResults(results);
     } catch (error) {
       console.error('Error searching bakeries:', error);
@@ -45,11 +48,11 @@ export default function SearchFormNYC() {
           type="text"
           value={searchQuery}
           onChange={(evt) => setSearchQuery(evt.target.value)}
-          placeholder="e.g., Franz Bakery"
+          placeholder="e.g., bagel buddy"
           bg="white"
         />
       </FormControl>
-      <Button onClick={handleSearch} colorScheme="yellow" rounded={'full'} px={6}>Search</Button>
+      <Button onClick={handleSearch} colorScheme="yellow" rounded={'full'} px={6}>search</Button>
       </Box>
       <br/>
       {/* style this */}

@@ -26,10 +26,19 @@ export function deleteBakery(id) {
 }
 
 // * Google Places Search export
-export function searchBakeries(searchQuery, location, radius) {
-  const url = `${BASE_URL}/search?query=${searchQuery}&location=${location}&radius=${radius}`;
+// export function searchBakeries(searchQuery, location, radius) {
+//   const url = `${BASE_URL}/search?query=${searchQuery}&location=${location}&radius=${radius}`;
+//   return sendRequest(url);
+// }
+
+export function searchBakeries(searchQuery, latitude, longitude, radius) {
+  const url = `${BASE_URL}/search?query=${searchQuery}&latitude=${latitude}&longitude=${longitude}&radius=${radius}`;
   return sendRequest(url);
 }
+
+
+
+
 
 // * R
 export function show(id) {

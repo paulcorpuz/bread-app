@@ -99,12 +99,17 @@ async function deleteBakery(req, res) {
 async function searchBakeries(req, res) {
   try {
     const searchQuery = req.query.query || 'bakery';
-    const location = req.query.location;
+    // const location = req.query.location;
+    const latitude = parseFloat(req.query.latitude);
+    const longitude = parseFloat(req.query.longitude);
     const radius = req.query.radius;
 
     // ? Query 1 for "Basic, Place Text Search data from Google"
+    // const response = await fetch(
+    //   `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchQuery}&location=${location}&radius=${radius}&type=bakery&key=${token}`
+    // );
     const response = await fetch(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchQuery}&location=${location}&radius=${radius}&type=bakery&key=${token}`
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchQuery}&location=${latitude},${longitude}&radius=${radius}&type=bakery&key=${token}`
     );
     console.log('---> from controller')
     const data = await response.json();
@@ -175,3 +180,9 @@ async function searchBakeries(req, res) {
     //   return photosResponse.json();
     // }));
     // console.log('---> Query Results #3 for Photo Images', PhotosData)
+
+
+  // https://developers.google.com/maps/documentation/places/web-service/search-text#:~:text=A%20Text%20Search%20returns%20information,bias%20that%20has%20been%20set.
+  // needs longitude /latitude 
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat 
+  // to return floating point number.

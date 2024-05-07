@@ -1,20 +1,44 @@
+import { useState } from 'react';
 import ProfileEditForm from '../ProfileEditForm/ProfileEditForm';
 
+import { Box, Heading, Text, Image, Flex, HStack, Button, } from "@chakra-ui/react";
+import { Icon } from '@chakra-ui/react'
+import { CgMail } from 'react-icons/cg'
 
-// --> takes prop from ProfilePage (user, setUser)
-export default function Profile({ user, setUser}) {
 
+export default function Profile({ user, setUser }) {
+  const [visible, setVisible] = useState(false);
 
   return (
-    <main>
-      <h1>Profile Component</h1>
-      <img src={user.profilePic} alt="Profile Pic" width="20%" height="auto"/>
-      <h2>{user.name}</h2>
-      <p>email: {user.email}</p>
-      <p>bio: {user.bio}</p>
-      <ProfileEditForm user={ user } setUser={ setUser } />
+    <Box>
+      <Flex align="center" mb={4}>
+        <Image src={user.profilePic} alt="Profile Pic" w="50%" h="auto" mr={4} />
 
-      
-    </main>
+        <Box>
+          <Heading as="h2" size="2xl" mb={2}>
+            {user.name}
+          </Heading>
+
+          <HStack>
+            <Icon as={CgMail} boxSize={6} />
+            <Text fontSize='md' mr={1}>{user.email}</Text>
+          </HStack>
+
+          <HStack>
+
+            <Text fontSize='md' mr={1}>{user.bio}</Text>
+          </HStack>
+
+          <br/>
+          {visible ? (
+            <ProfileEditForm user={user} setUser={setUser} setVisible={setVisible} />
+          ) : (
+            <Button onClick={() => setVisible(true)} colorScheme="yellow" rounded={'full'} px={6}>
+              Edit Profile
+            </Button>
+          )}
+        </Box>
+      </Flex>
+    </Box>
   );
 }

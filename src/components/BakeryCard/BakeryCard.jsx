@@ -27,6 +27,7 @@ export default function BakeryCard({ bakery }) {
       bg='white'
       p={0}
       m={0}
+      textAlign='center'
     >
       <Image
         objectFit='cover'
@@ -56,7 +57,7 @@ export default function BakeryCard({ bakery }) {
           </HStack>
         </CardBody>
 
-        <CardFooter>
+        <CardFooter justify={'center'}>
           <Button as={Link} to={`/bakeries/${bakery._id}`} colorScheme="yellow" rounded={'full'} px={6}>details</Button>
         </CardFooter>
       </Stack>

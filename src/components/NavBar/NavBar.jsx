@@ -47,7 +47,7 @@ export default function NavBar({ user, setUser }) {
       <ChakraLink as={RouterLink} to="/" sx={NavStyle}>
         <Heading as='h1' fontSize='2xl'>🍞 pan de city</Heading>
       </ChakraLink>
-      <ChakraLink as={RouterLink} to="/bakeries" sx={NavStyle}>bakeries</ChakraLink>
+      <ChakraLink as={RouterLink} to="/bakeries" sx={NavStyle}>bakery collection</ChakraLink>
       {user && <ChakraLink as={RouterLink} to="/searchSEA" sx={NavStyle}>Seattle</ChakraLink>}
       {user && <ChakraLink as={RouterLink} to="/searchNYC" sx={NavStyle}>New York</ChakraLink>}
       {user && <ChakraLink as={RouterLink} to="/searchSFO" sx={NavStyle}>San Francisco</ChakraLink>}
@@ -73,11 +73,11 @@ export default function NavBar({ user, setUser }) {
             </MenuButton>
             <MenuList>
               <MenuItem>
-                <ChakraLink as={RouterLink} to="/profile">Profile</ChakraLink>
+                <ChakraLink as={RouterLink} to="/profile">profile</ChakraLink>
               </MenuItem>
               <MenuDivider />
               <MenuItem>
-                <ChakraLink as={RouterLink} to="/" onClick={handleLogOut}>Log out</ChakraLink>
+                <ChakraLink as={RouterLink} to="/" onClick={handleLogOut}>log out</ChakraLink>
               </MenuItem>
             </MenuList>
           </Menu>

@@ -8,10 +8,12 @@ import {
   Box,
   Flex,
   Input,
+  Textarea,
+  
 } from '@chakra-ui/react'
 
 
-export default function ProfileEditForm({ user, setUser }) {
+export default function ProfileEditForm({ user, setUser, setVisible }) {
   const [editProfile, setEditProfile] = useState({
     name: user.name,
     email: user.email,
@@ -73,16 +75,6 @@ export default function ProfileEditForm({ user, setUser }) {
           />
         </FormControl>
 
-        <FormControl mb='10px'>
-          <FormLabel>bio</FormLabel>
-          <Input
-            type="text"
-            name="bio"
-            value={editProfile.bio}
-            onChange={handleChangeEdit}
-            bg="white"
-          />
-        </FormControl>
 
         <FormControl mb='10px'>
           <FormLabel>profile pic url</FormLabel>
@@ -95,11 +87,28 @@ export default function ProfileEditForm({ user, setUser }) {
           />
         </FormControl>
 
+        <FormControl mb='10px'>
+          <FormLabel>Bio</FormLabel>
+          <Textarea
+            name="bio"
+            value={editProfile.bio}
+            onChange={handleChangeEdit}
+            bg="white"
+            resize="vertical"
+            size="sm"
+          />
+        </FormControl>
+
         <Flex justify="flex-end">
-            <Button type="submit" colorScheme="yellow" rounded={'full'} px={6} >save changes</Button>
-          </Flex>
+          <Button onClick={() => setVisible(false)} colorScheme="gray" rounded={'full'} px={6}>
+            Cancel
+          </Button>
+          <Button type="submit" colorScheme="yellow" rounded={'full'} px={6} ml={4}>
+            Save Changes
+          </Button>
+        </Flex>
       </form>
       <p>{error}</p>
     </Box>
-  );
+  )
 }
