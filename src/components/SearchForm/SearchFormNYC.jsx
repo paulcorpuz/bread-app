@@ -9,6 +9,7 @@ import {
   Button,
   Box,
   Input,
+  SimpleGrid,
 } from '@chakra-ui/react'
 
 
@@ -55,12 +56,14 @@ export default function SearchFormNYC() {
       <Button onClick={handleSearch} colorScheme="yellow" rounded={'full'} px={6}>search</Button>
       </Box>
       <br/>
-      {/* style this */}
-      <div>
+
+
+      <SimpleGrid columns={2} spacing={2} minChildWidth='400px'>
         {searchResults.map((bakery) => (
           <SearchCard key={bakery.place_id} bakery={bakery} />
         ))}
-      </div>
+        </SimpleGrid>
+
 
 
 

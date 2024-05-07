@@ -12,10 +12,10 @@ import {
   Heading,
   HStack,
   Spacer,
-  IconButton,
+  Button,
 } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react';
-import { PiStarFill, PiXCircleFill } from 'react-icons/pi';
+import { PiStarFill } from 'react-icons/pi';
 
 export default function ReviewCard({ user, review, bakeryId, fetchBakery }) {
   const [error, setError] = useState("");
@@ -33,18 +33,27 @@ export default function ReviewCard({ user, review, bakeryId, fetchBakery }) {
   }
 
   return (
-    <Card borderTop='4px' borderColor='yellow.400' bg='white'>
+    <Card
+      // direction={{ base: 'column', sm: 'row' }}
+      overflow='hidden'
+      borderTop='8px'
+      borderColor='yellow.400'
+      bg='white'
+      p={0}
+      m={0}
+    // textAlign='center'
+    >
       <CardHeader>
         <Flex gap={5}>
           <Avatar src={review.profilePic} />
           <Box>
-            <Heading as='h3' size='sm'>{review.userName}</Heading>
+            <Heading as='h3' size='md' >{review.userName}</Heading>
             <Flex>
               <HStack>
                 <Icon as={PiStarFill} boxSize={4} />
                 <Text>{review.rating}</Text>
                 <Spacer />
-                <Text>
+                <Text>reviewed on&nbsp;
                   {date.toLocaleString([], {
                     month: 'long',
                     day: 'numeric',
@@ -56,23 +65,14 @@ export default function ReviewCard({ user, review, bakeryId, fetchBakery }) {
           </Box>
         </Flex>
       </CardHeader>
-      
+
       <CardBody>
         <Text>{review.content}</Text>
       </CardBody>
 
-      <CardFooter>
+      <CardFooter justify={'center'}>
         {isCurrentUser && (
-          <Flex justify="flex-end">
-            <IconButton
-              onClick={handleDeleteReview}
-              variant='solid'
-              colorScheme='teal'
-              aria-label='Delete Review'
-              fontSize='20px'
-              icon={<PiXCircleFill />}
-            />
-          </Flex>
+          <Button onClick={handleDeleteReview} colorScheme="yellow" rounded={'full'} px={6}>delete</Button>
         )}
       </CardFooter>
       {error && <p>{error}</p>}

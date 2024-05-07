@@ -1,8 +1,21 @@
 import { useState } from "react";
 import * as bakeriesAPI from "../../utilities/bakeries-api";
 
-import { Card, CardBody, CardFooter, Button, Image, Stack, Heading, Text} from '@chakra-ui/react'
-
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Button,
+  Image,
+  Stack,
+  Heading,
+  Text,
+  HStack,
+  Spacer,
+}
+  from '@chakra-ui/react'
+import { Icon } from '@chakra-ui/react'
+import { PiStarFill, PiCurrencyCircleDollarBold } from 'react-icons/pi'
 
 export default function SearchCard({ bakery }) {
   const [error, setError] = useState('');
@@ -19,15 +32,17 @@ export default function SearchCard({ bakery }) {
 
 
   return (
-    <Card 
-      direction={{ base: 'column', sm: 'row' }} 
-      overflow='hidden' 
-      borderTop='4px'
-      borderColor='yellow.400' 
+    <Card
+      direction={{ base: 'column', sm: 'row' }}
+      overflow='hidden'
+      borderTop='8px'
+      borderColor='yellow.400'
       bg='white'
+      p={0}
+      m={0}
+      textAlign='center'
     >
       {bakery.photos && bakery.photos.length > 0 && (
-
         // bakery photo
         <Image
           objectFit='cover'
@@ -36,30 +51,34 @@ export default function SearchCard({ bakery }) {
           alt={bakery.name}
         />
       )}
-      
-      {/* bakery info */}
+
       <Stack>
+        <Heading size='md'>{bakery.name}</Heading>
+
+        {/* bakery info */}
         <CardBody>
-          <Heading size='md'>{bakery.name}</Heading>
-          {bakery.formatted_address && <Text py='2'>{bakery.formatted_address}</Text>}
-          {bakery.price_level && <Text py='2'>Price Level: {bakery.price_level}</Text>}
-          {bakery.rating && <Text py='2'>Rating: {bakery.rating}</Text>}
-          {bakery.formatted_phone_number && <Text py='2'>Phone: {bakery.formatted_phone_number}</Text>}
-          {bakery.delivery && <Text py='2'>Delivery: {bakery.delivery}</Text>}
+        <HStack>
+            <Icon as={PiStarFill} boxSize={6} />
+            <Text fontSize='md' mr={1}>{bakery.rating}</Text>
+            <Text fontSize='md'>({bakery.user_ratings_total} reviews)</Text>
+            <Spacer />
+            <Icon as={PiCurrencyCircleDollarBold} boxSize={6} />
+            <Text fontSize='md'>{bakery.price_level}</Text>
+          </HStack>
+          <Spacer />
+            {bakery.formatted_address && <Text>{bakery.formatted_address}</Text>}
+            {bakery.formatted_phone_number && <Text>{bakery.formatted_phone_number}</Text>}
+
+          <CardFooter justify={'center'}>
+            <Button onClick={handleSubmitBakery} colorScheme="yellow" rounded={'full'} px={6}>
+              save bakery
+            </Button>
+          </CardFooter>
+
+          {error && <Text>{error}</Text>}
         </CardBody>
-
-        {/* <Divider /> */}
-        
-        <CardFooter>
-          <Button onClick={handleSubmitBakery} colorScheme="yellow" rounded={'full'} px={6}>
-            save bakery
-          </Button>
-        </CardFooter>
-
-        {error && <Text py='2'>{error}</Text>}
       </Stack>
-    
-    
+
     </Card>
   );
 }

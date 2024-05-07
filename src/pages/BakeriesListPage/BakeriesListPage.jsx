@@ -32,7 +32,7 @@ export default function BakeriesListPage() {
     <main>
         <br />
         <Heading fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight={'110%'}>
-          curated by the community
+          curated by the <Text as={'span'} color={'yellow.400'}>community</Text>
         </Heading>
         <br />
 

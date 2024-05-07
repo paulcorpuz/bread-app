@@ -72,10 +72,11 @@ export default function ReviewForm({ user, bakeryId, fetchBakery }) {
             <option value="4">4 Stars</option>
             <option value="5">5 Stars</option>
           </Select>
-
+          <br />
+          
           {/* Submit Button */}
           <Flex justify="flex-end">
-            <Button mt={5} colorScheme="yellow" type="submit">Submit Review</Button>
+            <Button type="submit" colorScheme="yellow" rounded={'full'} px={6}>submit</Button>
           </Flex>
         </FormControl>
 

@@ -10,7 +10,9 @@ export default function SearchPageNYC() {
         search <Text as={'span'} color={'yellow.400'}>New York City</Text>
       </Heading>
       <br />
-      <SearchFormNYC/>
+
+      <SearchFormNYC />
+
     </Box>
   );
 };

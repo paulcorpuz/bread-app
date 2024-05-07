@@ -14,7 +14,7 @@ import {
 }
   from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/react'
-import { PiStarFill, PiCurrencyCircleDollarBold, PiPhoneFill, PiLinkSimpleBold, PiMapTrifoldBold, PiCalendarDotsBold } from 'react-icons/pi'
+import { PiStarFill, PiCurrencyCircleDollarBold } from 'react-icons/pi'
 
 
 export default function BakeryCard({ bakery }) {
@@ -22,7 +22,7 @@ export default function BakeryCard({ bakery }) {
     <Card
       direction={{ base: 'column', sm: 'row' }}
       overflow='hidden'
-      borderTop='4px'
+      borderTop='8px'
       borderColor='yellow.400'
       bg='white'
       p={0}

@@ -1,6 +1,6 @@
 import Profile from "../../components/Profile/Profile";
 
-import { Box, Heading, Text, Center } from '@chakra-ui/react'
+import { Box, Heading, Text } from '@chakra-ui/react'
 
 
 // --> takes prop from App Page ()
@@ -12,7 +12,7 @@ export default function ProfilePage({ user, setUser }) {
         <Text as={'span'} color={'yellow.400'}> profile</Text>
       </Heading>
       <br />
-      
+
         <Profile user={user} setUser={setUser}/>
       </Box>
   );

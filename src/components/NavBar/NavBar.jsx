@@ -45,7 +45,7 @@ export default function NavBar({ user, setUser }) {
   return (
     <Flex as='Nav' p='10px' alignItems='center' gap='10px'>
       <ChakraLink as={RouterLink} to="/" sx={NavStyle}>
-        <Heading as='h1' fontSize='2xl'>🍞 pan de city</Heading>
+        <Heading as='h1' fontSize='xl'>🍞 pan de city</Heading>
       </ChakraLink>
       <ChakraLink as={RouterLink} to="/bakeries" sx={NavStyle}>bakery collection</ChakraLink>
       {user && <ChakraLink as={RouterLink} to="/searchSEA" sx={NavStyle}>Seattle</ChakraLink>}
