@@ -17,12 +17,12 @@ export default function SearchFormNYC() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  //search function searchQuery is set by USER, location and radius are ALWAYS set to Seattle, WA / 50000 m
+  //search function searchQuery is set by USER, location and radius are ALWAYS set
   const handleSearch = async function () {
     try {
       // const location = 'New York, NY';
-      const latitude = 40.7128; // Example latitude for New York City
-      const longitude = -74.0060; // Example longitude for New York City
+      const latitude = 40.7128;
+      const longitude = -74.0060;
       const radius = 50000; // radius in meters
       // const results = await searchBakeries(searchQuery, location, radius);
       const results = await searchBakeries(searchQuery, latitude, longitude, radius);
@@ -57,7 +57,6 @@ export default function SearchFormNYC() {
       </Box>
       <br/>
 
-
       <SimpleGrid columns={2} spacing={2} minChildWidth='400px'>
         {searchResults.map((bakery) => (
           <SearchCard key={bakery.place_id} bakery={bakery} />
@@ -65,10 +64,6 @@ export default function SearchFormNYC() {
         </SimpleGrid>
 
 
-
-
     </>
-
-
   );
 }

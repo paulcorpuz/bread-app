@@ -1,24 +1,23 @@
 <div id="header" align="center" alt="banner image">
-
-TODO: <img src="main_app/static/images/pg2banner.png" alt="Bread Banner" height="auto" width="400">
-
+  <img src="public/panDeCitylogoV1.png" alt="Bread Banner" height="auto" width="400">
 </div>
 
 
-🍞 Pan de City
+🍞 pan de city
 ============
 Pan de City is a platform that helps users discover and review local bakeries. 
 
-Users are able to search for businesses 
-based in the Seattle, San Francisco, and New York City areas, where they can read reviews from other users, 
+Satisfy your cravings and support local businesses. pan de city is your go-to source for finding the the best bakeries in town. Share your experiences, and help others find their slice, tart, or loaf of happiness.
+
+Users are able to search for businesses based in the Seattle, San Francisco, and New York City areas, where they can read reviews from other users, 
 and find contact business information to help find the best bake in town.
 
 <div id="App Link" align="center">
 
-TODO: ### [get that bread, literally](http link)
+  ### [get that bread, literally](https://pan-de-city-66ed6944c4c5.herokuapp.com/)
 
-<a href='https://www.linkedin.com/in/paulcorpuzseattle/' target="_blank"><img alt='LinkedIn' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=LinkedIn&logoColor=white&labelColor=0077b5&color=0077b5'/></a>
-<a href='https://github.com/paulcorpuz/' target="_blank"><img alt='GitHub' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=GitHub&logoColor=white&labelColor=black&color=000000'/></a>
+  <a href='https://www.linkedin.com/in/paulcorpuzseattle/' target="_blank"><img alt='LinkedIn' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=LinkedIn&logoColor=white&labelColor=0077b5&color=0077b5'/></a>
+  <a href='https://github.com/paulcorpuz/' target="_blank"><img alt='GitHub' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=GitHub&logoColor=white&labelColor=black&color=000000'/></a>
 
 </div>
 
@@ -33,10 +32,9 @@ Pan de City was developed using Mongo DB, Express, React, and Node featuring:
 
 - **Authentication:** to ensure user account and review integrity.
 
-- **Google Places API Integration:** to provide accurate information on local bakeries.
+- **Google Places API Integration (3rd Party):** to provide accurate information on local bakeries.
 
 - **Chakra UI:** to enhance the overall user experience.
-
 
 
 💻 Technologies Used
@@ -62,25 +60,25 @@ Pan de City was developed using Mongo DB, Express, React, and Node featuring:
 
 📸 Screenshots
 ==============
-TODO:
 ### Wireframe
-TODO:<img src="main_app/static/images/pg2wireframe.png" alt="Page Two Wireframe" height="auto" width="320">
+<img src="public/pdcWF.png" alt="Page Two Wireframe" height="auto" width="320">
 
 ### ERD
-TODO:<img src="main_app/static/images/pg2erd.png" alt="Page Two ERD" height="auto" width="320">
+<img src="public/pdcERD.png" alt="Page Two ERD" height="auto" width="320">
 
 ### Mid-Development
-TODO:<img src="main_app/static/images/pg2mid1.png" alt="Page Two Mid Dev 1" height="auto" width="320">
+<img src="public/pdcMID1.png" alt="Page Two Mid Dev 1" height="auto" width="320">
 
 ### Deployed
-TODO:<img src="main_app/static/images/pgdeployed.png" alt="Page Two Banner" height="auto" width="320">
+<img src="public/pdcDEP1.png" alt="Page Two Banner" height="auto" width="320">
 
+<img src="public/pdcDEP2.png" alt="Page Two Banner" height="auto" width="320">
 
 🔧 Getting Started 
 ============
 ### Prerequisites
 - Ensure you have a modern web browser installed on your device, such as Google Chrome, Firefox, Safari, or Edge.
-- To access full CRUD capabilities, please be sure to sign up/log in to Pan De City
+- To access full CRUD capabilities, please be sure to sign up/log in to pan de city.
 
 ### Installation
 No installation required, however, internet access is necessary.
@@ -88,10 +86,10 @@ No installation required, however, internet access is necessary.
 
 ⏭️ Next Steps
 ============
-- [ ] Better optimization for mobile screens.
-- [ ] Update UI to include collections by city.
-- [ ] Google Maps integration: Display bakery locations on a map.
-- [ ] Ability to search collection for bakeries by name or location.
+- [ ] Improve optimization for mobile screens.
+- [ ] Update UI to include community collections by city.
+- [ ] Additional Google Maps Integration: Render bakery locations on a map.
+- [ ] Ability to search community collection(s) for bakeries by name or location.
+- [ ] Connect to Cloud storage (e.g., AWS S3) to store user images to enhance review  experience.
 - [ ] Ability to share on other social media platforms.
-- [ ] Connect to Cloud storage (like AWS S3) to store user images.
-- [ ] Inclusion of dietary concerns, (Sorry gluten-free friends. This is top priority!)
+- [ ] Inclusion of dietary concerns, (Sorry gluten-free friends. This is top priority!!)

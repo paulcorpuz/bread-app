@@ -4,12 +4,9 @@ import * as BakeriesApi from '../../utilities/bakeries-api';
 import BakeriesGrid from "../../components/BakeriesGrid/BakeriesGrid";
 
 import {
-  Flex,
   Heading,
-  Stack,
-  Image,
   Text,
-  Link as ChakraLink,
+  // Link as ChakraLink,
 } from '@chakra-ui/react';
 
 export default function BakeriesListPage() {

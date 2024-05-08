@@ -8,6 +8,7 @@ import { CgMail } from 'react-icons/cg'
 
 export default function Profile({ user, setUser }) {
   const [visible, setVisible] = useState(false);
+  // const placeholderImageUrl = "https://i.imgur.com/bR1vf6R.png";
 
   return (
     <Box>
@@ -29,12 +30,12 @@ export default function Profile({ user, setUser }) {
             <Text fontSize='md' mr={1}>{user.bio}</Text>
           </HStack>
 
-          <br/>
+          <br />
           {visible ? (
             <ProfileEditForm user={user} setUser={setUser} setVisible={setVisible} />
           ) : (
             <Button onClick={() => setVisible(true)} colorScheme="yellow" rounded={'full'} px={6}>
-              Edit Profile
+              edit profile
             </Button>
           )}
         </Box>
@@ -42,3 +43,15 @@ export default function Profile({ user, setUser }) {
     </Box>
   );
 }
+
+
+
+// Notes ---
+
+//  <Image src={user.profilePic} alt="Profile Pic" w="50%" h="auto" mr={4} />
+
+// {user.profilePic ? (
+//   <Image src={user.profilePic} alt="Profile Pic" w="50%" h="auto" mr={4} />
+// ) : (
+//   <Image src={placeholderImageUrl} alt='Placeholder Pic' boxSize='40%' />
+// )}

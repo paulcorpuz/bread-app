@@ -4,8 +4,8 @@ import BakeryCard from '../BakeryCard/BakeryCard'
 import {SimpleGrid,} from '@chakra-ui/react'
 
 
-
 export default function BakeriesGrid({ bakeries, setBakeries }) {
+
   return (
     <main>
 

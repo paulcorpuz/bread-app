@@ -21,9 +21,9 @@ export default function SearchFormSEA() {
   //search function searchQuery is set by USER, location and radius are ALWAYS set to Seattle, WA / 50000 m
   const handleSearch = async function () {
     try {
-      // const location = 'Seattle, WA';
-      const latitude = 47.6062; // Example latitude for New York City
-      const longitude = -122.3321; // Example longitude for New York City
+      // const location = 'Seattle, WA'
+      const latitude = 47.6062
+      const longitude = -122.3321
       const radius = 50000; // radius in meters
       // const results = await searchBakeries(searchQuery, location, radius);
       const results = await searchBakeries(searchQuery, latitude, longitude, radius);
@@ -66,7 +66,5 @@ export default function SearchFormSEA() {
 
 
     </>
-
-
   );
 }

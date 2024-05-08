@@ -82,15 +82,15 @@ export default function BakeryShowPage({ user }) {
                       <Icon as={PiCurrencyCircleDollarBold} boxSize={6} />
                       <Text fontSize='md'>{bakery.priceLevel}</Text>
                       <Spacer />
-                      <Text fontSize='md'><strong>Takeout:</strong> {bakery.takeOut ? 'Yes' : 'No'}</Text>
+                      <Text fontSize='md'><strong>takeout:</strong> {bakery.takeOut ? 'yes' : 'No'}</Text>
                       <Spacer />
-                      <Text fontSize='md'><strong>Dine-in:</strong> {bakery.dineIn ? 'Yes' : 'No'}</Text>
+                      <Text fontSize='md'><strong>dine-in:</strong> {bakery.dineIn ? 'yes' : 'No'}</Text>
                     </HStack>
                   </Flex>
                   <Text sx={textStyles}>
-                    {bakery.editorialSummary && bakery.editorialSummary.overview ? bakery.editorialSummary.overview : 'No overview available'}
+                    {bakery.editorialSummary && bakery.editorialSummary.overview ? bakery.editorialSummary.overview : 'no overview available'}
                   </Text>
-                  <Heading size='lg'>Location and Hours</Heading>
+                  <Heading size='lg'>location & hours</Heading>
                   <Flex>
                     <HStack>
                       <Icon as={PiMapTrifoldBold} boxSize={6} />
@@ -114,7 +114,7 @@ export default function BakeryShowPage({ user }) {
                       <Flex>
                         <HStack>
                           <Icon as={PiCalendarDotsBold} boxSize={6} />
-                          <Heading size='md'>Opening Hours:</Heading>
+                          <Heading size='lg'>opening hours</Heading>
                         </HStack>
                       </Flex>
                       {bakery.openingHours.weekday_text.map((day, index) => (
@@ -131,7 +131,7 @@ export default function BakeryShowPage({ user }) {
             {user ? (
               <ReviewForm user={user} bakeryId={bakery._id} fetchBakery={fetchBakery} />
             ) : (
-              <Text>Please log in to leave a review.</Text>
+              <Text>please log in to leave a review.</Text>
             )}
             <br />
 
@@ -145,7 +145,7 @@ export default function BakeryShowPage({ user }) {
           </Box>
         </>
       ) : (
-        <Text style={textStyles}>Loading!!</Text>
+        <Text style={textStyles}>loading!!</Text>
       )}
     </>
   );

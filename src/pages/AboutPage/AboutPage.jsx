@@ -3,8 +3,6 @@ import {
   Stack,
   Heading,
   Text,
-  Box,
-  Flex,
   HStack,
   Link,
   UnorderedList,
@@ -24,17 +22,16 @@ export default function AboutPage() {
       <Container maxW="container.lg" mt={8}>
         <Stack spacing={8} textAlign="center">
 
-          <Text fontSize="xl">
-          nothing is worse than under baked bread, and pan de city was created to help you find that perfect bake.
-          </Text>
-
-          <Text>
-          pan de city is a platform that helps users discover and review local bakeries. Users are able to search for businesses 
-          based in the Seattle, San Francisco, and New York City areas, where they can read reviews from other users, 
-          and find contact business information to help find the best bake in town.
-          <br />
-          <br />
-          pan de city is brought to you by Paul Corpuz, developed using Mongo DB, Express, React, and Node featuring:
+          <Text fontSize="lg">
+            Nothing is worse than under baked bread, and pan de city was created to help you find that perfect bake.
+            <br />
+            <br />
+            pan de city is a platform that helps users discover and review local bakeries. Users are able to search for businesses
+            based in the Seattle, San Francisco, and New York City areas, where they can read reviews from other users,
+            and find contact business information to help find the best bake in town.
+            <br />
+            <br />
+            pan de city is brought to you by Paul Corpuz, developed using Mongo DB, Express, React, and Node featuring:
           </Text>
 
           <UnorderedList textAlign="left" ml={8} listStyleType="none">

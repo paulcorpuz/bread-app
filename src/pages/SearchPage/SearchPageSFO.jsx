@@ -2,7 +2,9 @@ import SearchFormSFO from '../../components/SearchForm/SearchFormSFO';
 
 import { Heading, Text, Box } from '@chakra-ui/react'
 
+
 export default function SearchPageSFO() {
+  
   return (
     <Box>
       <br />

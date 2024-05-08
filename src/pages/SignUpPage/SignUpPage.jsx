@@ -1,7 +1,6 @@
 import { Link as RouterLink } from 'react-router-dom';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
-
 import {
   Flex,
   Heading,
@@ -10,6 +9,7 @@ import {
   Text,
   Link as ChakraLink,
 } from '@chakra-ui/react';
+
 
 export default function SignUpPage({ setUser }) {
   return (

@@ -25,12 +25,10 @@ export default function LoginForm({ setUser }) {
   });
   const [error, setError] = useState('');
 
-
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
     setError('');
   }
-
 
   async function handleSubmit(evt) {
     evt.preventDefault(); // Prevent form from being submitted to the server
@@ -43,7 +41,6 @@ export default function LoginForm({ setUser }) {
       setError('Log In Failed - Try Again');
     }
   }
-
 
   return (
     <>
@@ -88,9 +85,6 @@ export default function LoginForm({ setUser }) {
               <Link color={'blue.500'}>forgot password?</Link>
             </Stack>
           </Stack>
-
-
-
 
           <Flex justify="flex-end">
             <Button type="submit" colorScheme="yellow" rounded={'full'} px={6}>

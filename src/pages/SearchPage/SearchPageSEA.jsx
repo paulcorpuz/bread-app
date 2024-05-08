@@ -3,6 +3,7 @@ import SearchFormSEA from '../../components/SearchForm/SearchFormSEA';
 import { Heading, Text, Box } from '@chakra-ui/react'
 
 export default function SearchPageSEA() {
+  
   return (
     <Box>
       <br />

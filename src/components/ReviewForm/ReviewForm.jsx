@@ -53,7 +53,7 @@ export default function ReviewForm({ user, bakeryId, fetchBakery }) {
       <form onSubmit={handleSubmit}>
         {/* Review Textarea */}
         <FormControl isRequired mb='10px'>
-          <FormLabel>Review</FormLabel>
+          <FormLabel>review</FormLabel>
           <Textarea
             value={content}
             onChange={handleChange}
@@ -64,13 +64,13 @@ export default function ReviewForm({ user, bakeryId, fetchBakery }) {
 
         {/* Rating Select */}
         <FormControl isRequired mb='10px'>
-          <FormLabel>Rating</FormLabel>
+          <FormLabel>rating</FormLabel>
           <Select value={rating} onChange={(evt) => setRating(evt.target.value)} placeholder='Select Rating' bg="white">
-            <option value="1">1 Star</option>
-            <option value="2">2 Stars</option>
-            <option value="3">3 Stars</option>
-            <option value="4">4 Stars</option>
-            <option value="5">5 Stars</option>
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <option value="4">4 stars</option>
+            <option value="5">5 stars</option>
           </Select>
           <br />
           

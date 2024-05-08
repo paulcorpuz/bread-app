@@ -22,7 +22,6 @@ export default function ProfileEditForm({ user, setUser, setVisible }) {
   });
   const [error, setError] = useState('');
 
-
   // Edit Profile "handle input"
   function handleChangeEdit(evt) {
     const updatedProfileData = { ...editProfile, [evt.target.name]: evt.target.value };
@@ -30,7 +29,6 @@ export default function ProfileEditForm({ user, setUser, setVisible }) {
     setEditProfile(updatedProfileData);
     setError('');
   }
-
 
   // "save updates" form
   async function handleSubmitEdit(evt) {
@@ -88,7 +86,7 @@ export default function ProfileEditForm({ user, setUser, setVisible }) {
         </FormControl>
 
         <FormControl mb='10px'>
-          <FormLabel>Bio</FormLabel>
+          <FormLabel>bio</FormLabel>
           <Textarea
             name="bio"
             value={editProfile.bio}
@@ -101,10 +99,10 @@ export default function ProfileEditForm({ user, setUser, setVisible }) {
 
         <Flex justify="flex-end">
           <Button onClick={() => setVisible(false)} colorScheme="gray" rounded={'full'} px={6}>
-            Cancel
+            cancel
           </Button>
           <Button type="submit" colorScheme="yellow" rounded={'full'} px={6} ml={4}>
-            Save Changes
+            save changes
           </Button>
         </Flex>
       </form>

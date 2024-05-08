@@ -18,6 +18,9 @@ import { PiStarFill, PiCurrencyCircleDollarBold } from 'react-icons/pi'
 
 
 export default function BakeryCard({ bakery }) {
+  const placeholderImageUrl = "https://i.imgur.com/bR1vf6R.png";
+
+  
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -29,13 +32,12 @@ export default function BakeryCard({ bakery }) {
       m={0}
       textAlign='center'
     >
-      <Image
-        objectFit='cover'
-        maxW={{ base: '100%', sm: '200px' }}
-
-        src='https://i.imgur.com/bR1vf6R.png'
-        alt={bakery.name}
-      />
+      {bakery.photoURL ? (
+        <Image src={bakery.photoURL} alt='Bakery Pic' objectFit='cover'
+          maxW={{ base: '100%', sm: '200px' }} />
+      ) : (
+        <Image src={placeholderImageUrl} alt='Placeholder Pic' boxSize='40%' />
+      )}
 
       <Stack>
         <Heading size='md'>{bakery.name}</Heading>
@@ -51,9 +53,9 @@ export default function BakeryCard({ bakery }) {
           </HStack>
 
           <HStack>
-            <Text fontSize='md'><strong>Takeout:</strong> {bakery.takeOut ? 'Yes' : 'No'}</Text>
+            <Text fontSize='md'><strong>takeout:</strong> {bakery.takeOut ? 'Yes' : 'No'}</Text>
             <Spacer />
-            <Text fontSize='md'><strong>Dine-in:</strong> {bakery.dineIn ? 'Yes' : 'No'}</Text>
+            <Text fontSize='md'><strong>dine-in:</strong> {bakery.dineIn ? 'Yes' : 'No'}</Text>
           </HStack>
         </CardBody>
 

@@ -2,7 +2,9 @@ import SearchFormNYC from '../../components/SearchForm/SearchFormNYC';
 
 import { Box, Heading, Text } from '@chakra-ui/react'
 
+
 export default function SearchPageNYC() {
+  
   return (
     <Box>
       <br />

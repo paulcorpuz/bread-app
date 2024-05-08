@@ -16,7 +16,7 @@ import SearchPageNYC from '../SearchPage/SearchPageNYC';
 import SearchPageSFO from '../SearchPage/SearchPageSFO';
 
 import BakeryShowPage from '../BakeryShowPage/BakeryShowPage';
-import RootLayOut from '../../RootLayOut/RootLayOut';
+// import RootLayOut from '../../RootLayOut/RootLayOut';
 
 
 export default function App() {
